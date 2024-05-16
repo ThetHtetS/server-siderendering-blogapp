@@ -42,7 +42,7 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-   
+     
   }
   
   .main {
@@ -78,7 +78,9 @@
   .ma-bt-lg {
     margin-bottom: 3.5rem !important;
   }
-  
+  .test {
+    display: flex;
+  }
   .right {
     text-align: right !important;
   }
