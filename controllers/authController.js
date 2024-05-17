@@ -14,7 +14,7 @@ const signToken = id => {
   });
 };
 
-const createSendToken = (user, statusCode,req, res) => {
+const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
   const cookieOptions = {
     expires: new Date(
@@ -49,7 +49,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm
   });
 
-  createSendToken(newUser, 201, req, res);
+  createSendToken(newUser, 201, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -67,7 +67,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 3) If everything ok, send token to client
-  createSendToken(user, 200,req, res);
+  createSendToken(user, 200, res);
 });
 
 exports.logout = (req, res) => {
