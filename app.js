@@ -23,7 +23,8 @@ const app = express();
 
 dotenv.config({ path: "./.env" });
 
-app.enable('trust proxy');
+// app.enable('trust proxy');
+app.set('trust proxy', 1) 
 
 // Set security HTTP headers
 app.use(helmet());
