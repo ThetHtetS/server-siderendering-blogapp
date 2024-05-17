@@ -77,14 +77,15 @@ app.use(express.static(path.join(__dirname, "public")));
 //app.use(express.static('public'));
 
 //cross-origin-resources-sharing
-const corsOptions = {
-  origin: "http://localhost:3000",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// const corsOptions = {
+//   origin: "http://localhost:3000",
+//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
 // access-control
-app.use(cors(corsOptions));
-
+// app.use(cors(corsOptions));
+app.use(cors());
+app.options('*', cors());
 //View
 app.use("/", viewRouter);
 app.use("/admin", admin_viewRouter);
