@@ -23,7 +23,9 @@ const createSendToken = (user, statusCode, res) => {
     ),
     // httpOnly: true,
     // secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
-    secure: true
+    secure: true,
+    sameSite: 'None', 
+    path: '/'
   });
 
   // Remove password from output
