@@ -113,6 +113,7 @@ if (userDataForm)
 
  
 if(newPostForm)
+  console.log(newPostForm)
   newPostForm.addEventListener('submit', e => {
     e.preventDefault();
     const form = new FormData();

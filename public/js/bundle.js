@@ -5963,7 +5963,8 @@ if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   form.append('photo', document.getElementById('photo').files[0]);
   (0, _updateSettings.updateSettings)(form, 'data');
 });
-if (newPostForm) newPostForm.addEventListener('submit', function (e) {
+if (newPostForm) console.log(newPostForm);
+newPostForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var form = new FormData();
   form.append('title', document.getElementById('title').value);
@@ -6022,7 +6023,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46467" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34783" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
