@@ -5963,8 +5963,7 @@ if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   form.append('photo', document.getElementById('photo').files[0]);
   (0, _updateSettings.updateSettings)(form, 'data');
 });
-if (newPostForm) console.log(newPostForm);
-newPostForm.addEventListener('submit', function (e) {
+if (newPostForm) newPostForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var form = new FormData();
   form.append('title', document.getElementById('title').value);
@@ -5972,8 +5971,10 @@ newPostForm.addEventListener('submit', function (e) {
   form.append('category', document.getElementById('category').value);
   if (document.getElementById('imageCover').files[0]) form.append('imageCover', document.getElementById('imageCover').files[0]);
   if (document.getElementById('image1').files[0]) form.append('images', document.getElementById('image1').files[0]);
-  if (document.getElementById('image2').files[0]) form.append('images', document.getElementById('image2').files[0]);
-  if (document.getElementById('image3').files[0]) form.append('images', document.getElementById('image3').files[0]);
+  // if(document.getElementById('image2').files[0])
+  //   form.append('images', document.getElementById('image2').files[0]);
+  // if(document.getElementById('image3').files[0])
+  //   form.append('images', document.getElementById('image3').files[0]);
   var data = JSON.parse(document.getElementById('postEdit--data').dataset.post_edit);
   (0, _post.createPost)(form, data);
 });
@@ -6023,7 +6024,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34783" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38615" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

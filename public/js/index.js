@@ -113,7 +113,6 @@ if (userDataForm)
 
  
 if(newPostForm)
-  console.log(newPostForm)
   newPostForm.addEventListener('submit', e => {
     e.preventDefault();
     const form = new FormData();
@@ -124,10 +123,10 @@ if(newPostForm)
       form.append('imageCover', document.getElementById('imageCover').files[0]);
     if(document.getElementById('image1').files[0])
       form.append('images', document.getElementById('image1').files[0]);
-    if(document.getElementById('image2').files[0])
-      form.append('images', document.getElementById('image2').files[0]);
-    if(document.getElementById('image3').files[0])
-      form.append('images', document.getElementById('image3').files[0]);
+    // if(document.getElementById('image2').files[0])
+    //   form.append('images', document.getElementById('image2').files[0]);
+    // if(document.getElementById('image3').files[0])
+    //   form.append('images', document.getElementById('image3').files[0]);
     let data = JSON.parse(document.getElementById('postEdit--data').dataset.post_edit)
     createPost(form, data);
   });
