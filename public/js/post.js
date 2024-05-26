@@ -7,7 +7,7 @@ export const createPost = async( form , data)=>{
     try {
         let res;
         if(data.editMode=='true') {
-          res = await axios.put(`https://d13om1uypm19bv.cloudfront.net/api/v1/posts/${data.postId}`, form, 
+          res = await axios.put(`/api/v1/posts/${data.postId}`, form, 
           {
             headers: {
               'Content-Type': 'multipart/form-data',
@@ -16,7 +16,7 @@ export const createPost = async( form , data)=>{
           );
         }
         else {
-          res = await axios.post(`https://d13om1uypm19bv.cloudfront.net/api/v1/posts`, form, {
+          res = await axios.post(`/api/v1/posts`, form, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
@@ -37,7 +37,7 @@ export const createPost = async( form , data)=>{
 export const deletePost = async(post_id)=>{
 
   try {
-      const res = await axios.delete(`http://localhost:4000/api/v1/posts/${post_id}`);
+      const res = await axios.delete(`/api/v1/posts/${post_id}`);
   
       if (res.status === 204) {
         showAlert('success', 'deleted successfully!');

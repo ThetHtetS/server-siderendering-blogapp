@@ -8,11 +8,11 @@ export const createCatz = async( data, editMode )=>{
     try {
       let res;
       if (editMode) {
-         res = await axios.put(`http://localhost:4000/api/v1/category/${data._id}`, data);
+         res = await axios.put(`/api/v1/category/${data._id}`, data);
     
       }
       else {
-        res = await axios.post(`http://localhost:4000/api/v1/category`, data);
+        res = await axios.post(`/api/v1/category`, data);
     
       }
    
@@ -30,7 +30,7 @@ export const createCatz = async( data, editMode )=>{
 export const deleteCatz = async(cat_id)=>{
 
   try {
-      const res = await axios.delete(`http://localhost:4000/api/v1/category/${cat_id}`);
+      const res = await axios.delete(`/api/v1/category/${cat_id}`);
   
       if (res.status === 204) {
         showAlert('success', 'deleted successfully!');

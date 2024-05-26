@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+var cookieSession = require('cookie-session')
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('./../models/userModel');

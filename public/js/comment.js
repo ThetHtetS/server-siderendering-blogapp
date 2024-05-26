@@ -6,7 +6,7 @@ import { showAlert } from './alerts';
 export const createComment = async(data, postId)=>{
 
     try {
-        const res = await axios.post(`http://localhost:4000/api/v1/posts/${postId}/comment`, data);
+        const res = await axios.post(`/api/v1/posts/${postId}/comment`, data);
     
         if (res.data.status === 'success') {
           showAlert('success', 'created successfully!');

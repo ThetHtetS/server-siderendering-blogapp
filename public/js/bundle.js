@@ -5563,7 +5563,7 @@ var logout = exports.logout = /*#__PURE__*/function () {
           _context3.next = 3;
           return (0, _axios.default)({
             method: 'GET',
-            url: 'https://d13om1uypm19bv.cloudfront.net/api/v1/users/logout'
+            url: '/api/v1/users/logout'
           });
         case 3:
           res = _context3.sent;
@@ -5610,14 +5610,14 @@ var createCatz = exports.createCatz = /*#__PURE__*/function () {
             break;
           }
           _context.next = 4;
-          return _axios.default.put("http://localhost:4000/api/v1/category/".concat(data._id), data);
+          return _axios.default.put("/api/v1/category/".concat(data._id), data);
         case 4:
           res = _context.sent;
           _context.next = 10;
           break;
         case 7:
           _context.next = 9;
-          return _axios.default.post("http://localhost:4000/api/v1/category", data);
+          return _axios.default.post("/api/v1/category", data);
         case 9:
           res = _context.sent;
         case 10:
@@ -5651,7 +5651,7 @@ var deleteCatz = exports.deleteCatz = /*#__PURE__*/function () {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
-          return _axios.default.delete("http://localhost:4000/api/v1/category/".concat(cat_id));
+          return _axios.default.delete("/api/v1/category/".concat(cat_id));
         case 3:
           res = _context2.sent;
           if (res.status === 204) {
@@ -5702,7 +5702,7 @@ var createPost = exports.createPost = /*#__PURE__*/function () {
             break;
           }
           _context.next = 4;
-          return _axios.default.put("https://d13om1uypm19bv.cloudfront.net/api/v1/posts/".concat(data.postId), form, {
+          return _axios.default.put("/api/v1/posts/".concat(data.postId), form, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -5713,7 +5713,7 @@ var createPost = exports.createPost = /*#__PURE__*/function () {
           break;
         case 7:
           _context.next = 9;
-          return _axios.default.post("https://d13om1uypm19bv.cloudfront.net/api/v1/posts", form, {
+          return _axios.default.post("/api/v1/posts", form, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -5751,7 +5751,7 @@ var deletePost = exports.deletePost = /*#__PURE__*/function () {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
-          return _axios.default.delete("http://localhost:4000/api/v1/posts/".concat(post_id));
+          return _axios.default.delete("/api/v1/posts/".concat(post_id));
         case 3:
           res = _context2.sent;
           if (res.status === 204) {
@@ -5798,7 +5798,7 @@ var updateSettings = exports.updateSettings = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          url = type === 'password' ? 'http://localhost:4000/api/v1/users/updateMyPassword' : 'http://localhost:4000/api/v1/users/updateMe';
+          url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
@@ -5848,7 +5848,7 @@ var createComment = exports.createComment = /*#__PURE__*/function () {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return _axios.default.post("http://localhost:4000/api/v1/posts/".concat(postId, "/comment"), data);
+          return _axios.default.post("/api/v1/posts/".concat(postId, "/comment"), data);
         case 3:
           res = _context.sent;
           if (res.data.status === 'success') {
@@ -6022,7 +6022,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37765" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34417" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
