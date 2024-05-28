@@ -7,7 +7,7 @@ const APIFeatures = require('../utils/appFeatures');
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
  
-
+  req.query.limit = 4;
   const features = new APIFeatures(postModel.find(), req.query)
   .filter()
   .sort()
