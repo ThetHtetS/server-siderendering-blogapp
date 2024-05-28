@@ -1534,8 +1534,6 @@
   .card {
     border-radius: 2rem;
     overflow: hidden;
-    /* background-color: #fff; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     display: flex;
     flex-direction: column;
   }
@@ -1553,15 +1551,10 @@
   }
 
   .card-side {
-    /* margin-bottom: 6px; */
-    /* border-radius: 1rem; */
     overflow: hidden;
-    /* background-color: 	#ede8e8; */
     min-height: 150px;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     display: flex;
     border-bottom: 1px solid #818195;
-    
   }
 
 
@@ -1572,7 +1565,7 @@
     flex-direction: column;
     justify-content: space-between;
     /* background-color: #fff; */
-    max-width: 250px; 
+    /* max-width: 250px;  */
   }
 
   .card__title--side {
