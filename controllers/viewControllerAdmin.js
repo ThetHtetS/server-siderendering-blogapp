@@ -31,8 +31,7 @@ exports.getAllPosts = catchAsync(async (req, res, next) => {
       .sort()
       .limitFields()
       .paginate();
-  const currentPage = req.query.page ;
-  console.log(currentPage, "currnet page");
+  const currentPage = req.query.page;
   const posts = await features.query.populate('author');
   const categories = await categoryModel.find();
   // 2) Build template
