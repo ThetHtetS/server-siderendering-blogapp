@@ -963,6 +963,7 @@
     display: flex;
     justify-content: center;
     gap: 2rem;
+    overflow-x: scroll;
   }
 
   section .paginationContainer span {
