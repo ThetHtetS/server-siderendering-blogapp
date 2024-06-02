@@ -1516,6 +1516,14 @@
    .main {
     padding: 0px 5px;
    }
+   .main-post {
+    width: 100%;
+    /* align-self: stretch; */
+   }
+   .side-post{
+     width: 100%;
+     /* flex: 1 10; */
+   }
   }
 
   @media  only screen and (max-width: 1000px) and (min-width: 600px){
@@ -1526,7 +1534,7 @@
    }
    .side-post{
      width: 100%;
-     flex: 1 10;
+     /* flex: 1 10; */
    }
 
    .main {
