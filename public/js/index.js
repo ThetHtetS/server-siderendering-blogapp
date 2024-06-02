@@ -123,7 +123,7 @@ if (userDataForm)
  
 if(newPostForm)
   newPostForm.addEventListener('submit', e => {
-    // e.preventDefault();
+    e.preventDefault();
     const form = new FormData();
     form.append('title', document.getElementById('title').value);
     form.append('body', document.getElementById('body').value);
