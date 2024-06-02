@@ -1511,8 +1511,14 @@
       font-size: 1.6rem;
     }
   }
+  
+  @media  only screen and (max-width: 600px){
+   .main {
+    padding: 0px 5px;
+   }
+  }
 
-  @media  only screen and (max-width: 1000px){
+  @media  only screen and (max-width: 1000px) and (min-width: 600px){
   
   .main-post {
     width: 100%;
@@ -1524,7 +1530,7 @@
    }
 
    .main {
-    padding: auto;
+    padding: 20px 50px;
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
@@ -1579,7 +1585,7 @@
     flex-direction: column;
     background-color: 	white; 
     min-height: 68vh;
-    min-width: 340px;
+   
     padding:  5px;
   }
 
@@ -1683,7 +1689,6 @@
   .miniPostCard {
     overflow: hidden;
     min-height: 145px;
-    min-width: 340px;
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #818195;
