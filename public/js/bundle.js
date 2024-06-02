@@ -5979,8 +5979,7 @@ if (newPostForm) newPostForm.addEventListener('submit', function (e) {
   form.append('body', document.getElementById('body').value);
   form.append('category', document.getElementById('category').value);
   if (document.getElementById('imageCover').files[0]) form.append('imageCover', document.getElementById('imageCover').files[0]);
-  // if(document.getElementById('image1').files[0])
-  //   form.append('images', document.getElementById('image1').files[0]);
+  if (document.getElementById('image1').files[0]) form.append('images', document.getElementById('image1').files[0]);
   // if(document.getElementById('image2').files[0])
   //   form.append('images', document.getElementById('image2').files[0]);
   // if(document.getElementById('image3').files[0])
@@ -6034,7 +6033,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45257" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43461" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

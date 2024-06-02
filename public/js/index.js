@@ -130,8 +130,8 @@ if(newPostForm)
     form.append('category', document.getElementById('category').value)
     if(document.getElementById('imageCover').files[0])
       form.append('imageCover', document.getElementById('imageCover').files[0]);
-    // if(document.getElementById('image1').files[0])
-    //   form.append('images', document.getElementById('image1').files[0]);
+    if(document.getElementById('image1').files[0])
+      form.append('images', document.getElementById('image1').files[0]);
     // if(document.getElementById('image2').files[0])
     //   form.append('images', document.getElementById('image2').files[0]);
     // if(document.getElementById('image3').files[0])
