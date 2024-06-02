@@ -5912,16 +5912,18 @@ if (userMenuBtn) userMenuBtn.addEventListener('click', function () {
   main.style.opacity = "0.2";
   main.style.backgroundColor = "rbga(0,0,0,0.5)";
 });
-if (userMenuCloseBtn) var sidebar = document.querySelector('.sidebar--nav');
-var main = document.querySelector('.main');
-main.addEventListener('click', function () {
-  sidebar.style.transform = "translateX(+300px)";
-  main.style.opacity = "1";
-});
-userMenuCloseBtn.addEventListener('click', function () {
-  sidebar.style.transform = "translateX(+300px)";
-  main.style.opacity = "1";
-});
+if (userMenuCloseBtn) {
+  var sidebar = document.querySelector('.sidebar--nav');
+  var main = document.querySelector('.main');
+  main.addEventListener('click', function () {
+    sidebar.style.transform = "translateX(+300px)";
+    main.style.opacity = "1";
+  });
+  userMenuCloseBtn.addEventListener('click', function () {
+    sidebar.style.transform = "translateX(+300px)";
+    main.style.opacity = "1";
+  });
+}
 if (btnDeletePost) Array.from(btnDeletePost).forEach(function (item) {
   item.addEventListener('click', function (e) {
     (0, _post.deletePost)(e.target.dataset.post_id);
@@ -5972,6 +5974,8 @@ if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   form.append('photo', document.getElementById('photo').files[0]);
   (0, _updateSettings.updateSettings)(form, 'data');
 });
+console.log(newPostForm, "newPOst form");
+console.log("new post");
 if (newPostForm) newPostForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var form = new FormData();
@@ -6033,7 +6037,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42567" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42145" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

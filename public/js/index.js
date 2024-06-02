@@ -44,7 +44,7 @@ if (userMenuBtn)
   })
 
 if(userMenuCloseBtn)
-  var sidebar = document.querySelector('.sidebar--nav');
+ { var sidebar = document.querySelector('.sidebar--nav');
   var main = document.querySelector('.main')
   main.addEventListener('click', ()=> {
     sidebar.style.transform ="translateX(+300px)"
@@ -54,7 +54,7 @@ if(userMenuCloseBtn)
     sidebar.style.transform ="translateX(+300px)"
     main.style.opacity="1"    
 })
-
+ }
 if (btnDeletePost)
   Array.from(btnDeletePost).forEach( item => {
   item.addEventListener('click', e => {
@@ -120,7 +120,8 @@ if (userDataForm)
     updateSettings(form, 'data');
   });
 
- 
+console.log(newPostForm, "newPOst form");
+console.log("new post")
 if(newPostForm)
   newPostForm.addEventListener('submit', e => {
     e.preventDefault();
