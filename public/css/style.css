@@ -1234,6 +1234,11 @@
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
   }
+  .photo-upload {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   
   .container-admin{
     display: flex;
@@ -1247,12 +1252,14 @@
     height: 100vh;
     width: 20%;
     z-index: 999;
-    background-color: rgba(50, 130, 222, 0.205);
+    /* background-color: rgba(50, 130, 222, 0.205);
     backdrop-filter: blur(10px);
-    box-shadow: -10px 0px 10px;
+    box-shadow: -10px 0px 10px; */
+    background-color: black;
     display: none;
     justify-content: center;
   }
+
 
   @media (max-width: 1050px) {
     .sidebar {
@@ -1319,7 +1326,6 @@
     display: none;
   }
  
-
   .sidebar.active {
     display: block
   }
@@ -1331,7 +1337,20 @@
     display: block;
   }
  }
+.newPostContainer {
+  background-color: white;
+  padding: 4rem 4rem;
+}
 
+.newpost-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.form--post {
+  width: 100%;
+}
 
 
 
