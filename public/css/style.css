@@ -1578,6 +1578,7 @@
     flex-direction: column;
     background-color: 	white; 
     min-height: 68vh;
+    min-width: 340px;
     padding:  5px;
   }
 
@@ -1681,6 +1682,7 @@
   .miniPostCard {
     overflow: hidden;
     min-height: 145px;
+    min-width: 340px;
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #818195;
