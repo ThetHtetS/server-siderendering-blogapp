@@ -73,7 +73,7 @@ exports.getPost = catchAsync(async (req, res, next) => {
   const post = await postModel.findOne({ slug: req.params.slug }).populate({
     path: "comments",
     fields: "comment user",
-  });
+  }).populate({path: "author"});
 
   if (!post) {
     return next(new AppError("There is no post with that name.", 404));
