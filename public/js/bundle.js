@@ -5886,7 +5886,7 @@ var newCatzForm = document.querySelector('.form--category');
 var signupForm = document.querySelector('.form--signup');
 var userDataForm = document.querySelector('.form-user-data');
 var logOutBtn = document.querySelector('.nav__el--logout');
-var newPostForm = document.querySelector('.form--post');
+var newPostForm = document.querySelector('#form--post');
 var commentForm = document.querySelector('.form--comment');
 var btnDeleteCatz = document.querySelectorAll('.btnDelete--category');
 var btnEditCatz = document.querySelectorAll('.btnEdit--category');
@@ -5973,7 +5973,7 @@ if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   (0, _updateSettings.updateSettings)(form, 'data');
 });
 if (newPostForm) newPostForm.addEventListener('submit', function (e) {
-  // e.preventDefault();
+  e.preventDefault();
   var form = new FormData();
   form.append('title', document.getElementById('title').value);
   form.append('body', document.getElementById('body').value);
@@ -6033,7 +6033,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34259" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42567" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
