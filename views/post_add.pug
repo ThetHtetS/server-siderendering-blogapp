@@ -10,7 +10,7 @@ block content
         .newPostContainer        
             .newpost-form
                 h2.heading Create new post
-                form.form#form--post
+                form.form#form--post.form--post
                     .form__group.photo-upload
                     if(post)
                         img(src=`/img/posts/${post.imageCover}`, width="300", height="200" , alt=`${post.title}`)
