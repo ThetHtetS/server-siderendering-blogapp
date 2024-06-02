@@ -48,6 +48,9 @@ if(userMenuCloseBtn)
     sidebar.style.transform ="translateX(+300px)"
     let main = document.querySelector('.main')
     main.style.opacity="1"
+    main.addEventListener('click', ()=> {
+      sidebar.style.transform ="translateX(+300px)"
+    })
 })
 
 if (btnDeletePost)
