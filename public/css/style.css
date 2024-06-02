@@ -1836,26 +1836,55 @@ nav div {
   background-color: #537bda;
 } */
 
+
+/* @keyframes slideInRight {
+  from {
+  transform: translateX(+400px);
+  }
+  to {
+  transform: translateX(0px);
+  }
+} */
+
+
 .sidebar--nav {
  position: fixed;
  top: 0;
  right: 0;
  height: 100vh;
- width: 350px;
+ width: 300px;
  z-index: 999;
- background-color: rgba(50, 130, 222, 0.205);
- backdrop-filter: blur(10px);
- box-shadow: -10px 0px 10px;
- display: none;
+ transform: translateX(+300px);
+ background-color: white;
+ color: black;
  justify-content: center;
+ transition: 0.2s ease;
+  /*
+ background-color: rgba(50, 130, 222, 0.205); */
+ /* backdrop-filter: blur(10px); */
+ /* box-shadow: -10px 0px 10px; */
+ /* display: none; */
+ /* animation-name: slideInRight;
+ animation-duration: 0.15s;
+ animation-timing-function: ease-in-out; */
 
 }
-
+.sidebar--nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fa-times .fa-bars {
+  font-size: 3rem;
+  font-weight: bold;
+}
 
 .sidebar--nav li {
+  cursor: pointer;
   display: block;
-  margin: 24px 0
-  /* width: 100%; */
+  margin: 24px 0;
+  text-transform: uppercase;
+  font-size: 1.6rem;
 }
 
 .sidebar--nav a {
@@ -1891,6 +1920,7 @@ nav div {
 
 @media screen and (max-width: 500px) {
   .sidebar--nav {
-    width: 100%;
+    width: 200px;
+    transform: translateX(+200px);
   }
 }

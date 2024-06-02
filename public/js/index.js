@@ -37,13 +37,17 @@ if(adminMenuBtn)
 if (userMenuBtn) 
   userMenuBtn.addEventListener('click', ()=>{
     let sidebar = document.querySelector('.sidebar--nav');
-    sidebar.style.display ="flex"
+    sidebar.style.transform="translateX(0px)"
+    let main = document.querySelector('.main')
+    main.style.opacity="0.2"
   })
 
 if(userMenuCloseBtn)
   userMenuCloseBtn.addEventListener('click', ()=> {
     let sidebar = document.querySelector('.sidebar--nav');
-    sidebar.style.display ="none"
+    sidebar.style.transform ="translateX(+300px)"
+    let main = document.querySelector('.main')
+    main.style.opacity="1"
 })
 
 if (btnDeletePost)

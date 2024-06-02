@@ -22,20 +22,22 @@ nav
         a(href='/signup') Sign up 
 
     li.nav__el#userMenuBtn 
-      a Menu
+      a
+        i(class="fa fa-bars" aria-hidden="true")
 
 
-                      //-/////////////////////////nav sidebar /////////////////////////////
+                       //-/////////////////////////nav sidebar /////////////////////////////
 .sidebar--nav
   ul
-    li.nav__el#userMenuCloseBtn 
-      a Close  
-    li.nav__el 
+    li#userMenuCloseBtn 
+      a
+        i(class="fa fa-times" aria-hidden="true") 
+    li
       a Home 
-    li.nav__el
+    li
       a category
     if user
-      li.nav__el--logout 
+      li 
         a Log out
       li 
         a.nav__el(href='/me')
