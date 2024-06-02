@@ -5910,6 +5910,7 @@ if (userMenuBtn) userMenuBtn.addEventListener('click', function () {
   sidebar.style.transform = "translateX(0px)";
   var main = document.querySelector('.main');
   main.style.opacity = "0.2";
+  main.style.backgroundColor = "rbga(0,0,0,0.5)";
 });
 if (userMenuCloseBtn) userMenuCloseBtn.addEventListener('click', function () {
   var sidebar = document.querySelector('.sidebar--nav');
@@ -5918,6 +5919,7 @@ if (userMenuCloseBtn) userMenuCloseBtn.addEventListener('click', function () {
   main.style.opacity = "1";
   main.addEventListener('click', function () {
     sidebar.style.transform = "translateX(+300px)";
+    main.style.opacity = "1";
   });
 });
 if (btnDeletePost) Array.from(btnDeletePost).forEach(function (item) {
@@ -6031,7 +6033,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33281" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44717" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

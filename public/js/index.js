@@ -40,6 +40,7 @@ if (userMenuBtn)
     sidebar.style.transform="translateX(0px)"
     let main = document.querySelector('.main')
     main.style.opacity="0.2"
+    main.style.backgroundColor = "rbga(0,0,0,0.5)"
   })
 
 if(userMenuCloseBtn)
@@ -48,8 +49,10 @@ if(userMenuCloseBtn)
     sidebar.style.transform ="translateX(+300px)"
     let main = document.querySelector('.main')
     main.style.opacity="1"
+    
     main.addEventListener('click', ()=> {
       sidebar.style.transform ="translateX(+300px)"
+      main.style.opacity="1"
     })
 })
 
