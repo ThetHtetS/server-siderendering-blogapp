@@ -1504,27 +1504,23 @@
   @media  only screen and (max-width: 600px){
     .main {
       font-size: 1.3rem;
+      padding: 0px;
     }
   }
   @media  only screen and (min-width: 601px){
     .main {
       font-size: 1.6rem;
     }
+    .main-post {
+      width: 100%;
+      /* align-self: stretch; */
+     }
+     .side-post{
+       width: 100%;
+       /* flex: 1 10; */
+     }
   }
   
-  @media  only screen and (max-width: 600px){
-   .main {
-    padding: 0px 5px;
-   }
-   .main-post {
-    width: 100%;
-    /* align-self: stretch; */
-   }
-   .side-post{
-     width: 100%;
-     /* flex: 1 10; */
-   }
-  }
 
   @media  only screen and (max-width: 1000px) and (min-width: 600px){
   
