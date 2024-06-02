@@ -1511,6 +1511,7 @@
       font-size: 1.6rem;
     }
   }
+
   @media  only screen and (max-width: 1000px){
   
   .main-post {
@@ -1523,7 +1524,7 @@
    }
 
    .main {
-    padding: 20px 50px;
+    padding: auto;
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
