@@ -1,15 +1,17 @@
 extends adminbase
+ 
+include _pagination
 
 block content
-   main.main
+   main.main-admin
       .container--table  
-        table.table
+        table.table.post
             tr 
-                th.hideOnMobileAdmin Photo
-                th.title Title 
-                th.hideOnMobileAdmin Author
-                th edit
-                th delete
+                th.hideOnMobileAdmin.photo PHOTO
+                th.title TITLE 
+                th.hideOnMobileAdmin AUTHOR
+                th EDIT
+                th DELETE
             each post in posts
                 tr 
                     td.hideOnMobileAdmin   
@@ -18,25 +20,71 @@ block content
                     td.hideOnMobileAdmin= post.author.name
                     td 
                       a.edit(href=`/admin/post/${post._id}`)
-                        button.btn--round.btn--green 
-                          svg(width="24px", height="24px")
-                            use(xlink:href="/img/icons.svg#icon-edit")
+                        i(class="fa-solid fa-file-pen fa-large fa-green")
                     td 
-                      button.btnDelete--post.btn--round.btn--red(data-post_id=post._id)
-                        svg(width="24px", height="24px")
-                          use(xlink:href="/img/icons.svg#icon-delete")
+                      i(class="fa-solid fa-trash fa-large fa-red")
+                      //- button.btnDelete--post.btn--round.btn--red(data-post_id=post._id)
+                        
+      section
+        +pagination(currentPage, totalPage, category)
 
-      .pagination-section
-        .previous
-          a(href=`/admin/posts?page=${currentPage *1 -1}&limit=3`)
-            button.btn.btn--white
-              svg(width="32px", height="32px")
-                use(xlink:href="/img/icons.svg#icon-chevron-left")  
-        .next
-          a(href=`/admin/posts?page=${currentPage *1 +1}&limit=3`)          
-            button.btn.btn--white
-              svg(width="32px", height="32px")
-                use(xlink:href="/img/icons.svg#icon-chevron-right") 
+
+
+
+
+
+
+
+        //- .paginationContainer
+        //-   if (currentPage != 1)
+        //-     a(href=`?page=${currentPage *1 -1}${category ? `&category=${category}` : '' }`)
+        //-       span previous
+        //-   a.text-decoration-none(href=`?page=1${category ? `&category=${category}` : '' }`)
+        //-     span(class=`page ${'1'==currentPage ? 'active': ''}`) 1
+        //-   if(totalPage<=10)
+        //-     +pageList(currentPage, 2, totalPage , category)
+        //-     //- - for (var page=2; page<totalPage; page++)
+        //-     //-     a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+        //-     //-       span(class=`page ${page==currentPage ? 'active': ''}`)=page
+        //-   else 
+        //-     if (currentPage<5)  
+        //-       +pageList(currentPage, 2, 8, category)     
+        //-       //- - for (var page=2; page<=7; page++)
+        //-       //-     a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+        //-       //-       span(class=`page ${page==currentPage ? 'active': ''}`)=page
+        //-       div ....
+        //-     else if(currentPage>totalPage-4)
+        //-       div ....
+        //-       +pageList(currentPage, totalPage -4 , totalPage, category)
+        //-       //- - for (var page= totalPage -4; page<totalPage; page++)
+        //-       //-     a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+        //-       //-       span(class=`page ${page==currentPage ? 'active': ''}`)=page   
+        //-     else
+        //-       div ....
+        //-       +pageList(currentPage, currentPage -2, currentPage*1 +3, category)
+        //-       //- - for (var page= currentPage -2; page<currentPage*1 + 3; page++)
+        //-       //-     a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+        //-       //-       span(class=`page ${page==currentPage ? 'active': ''}`)=page 
+        //-       div ....
+        //-   a.text-decoration-none(href=`?page=${totalPage}${category ? `&category=${category}` : '' }`)
+        //-     span(class=`page ${totalPage==currentPage ? 'active': ''}`)=totalPage
+        //-   if (totalPage != currentPage)
+        //-     a(href=`?page=${currentPage *1 +1}${category ? `&category=${category}` : '' }`)
+        //-       span next
+            
+        
+        
+        
+        //- .previous
+        //-   a(href=`/admin/posts?page=${currentPage *1 -1}&limit=3`)
+        //-     button.btn.btn--white
+        //-       svg(width="32px", height="32px")
+        //-         use(xlink:href="/img/icons.svg#icon-chevron-left")  
+        //- .next
+        //-   a(href=`/admin/posts?page=${currentPage *1 +1}&limit=3`)          
+        //-     button.btn.btn--white
+        //-       svg(width="32px", height="32px")
+        //-         use(xlink:href="/img/icons.svg#icon-chevron-right") 
     
        
        

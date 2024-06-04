@@ -1,0 +1,43 @@
+
+mixin pageList(currentPage,  startPage, endPage, category)
+  - for (var page=startPage; page<endPage; page++)
+      a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+        span(class=`page ${page==currentPage ? 'active': ''}`)=page
+
+mixin pagination(currentPage, totalPage, category)
+   .paginationContainer
+          if (currentPage != 1)
+            a(href=`?page=${currentPage *1 -1}${category ? `&category=${category}` : '' }`)
+              span previous
+          a.text-decoration-none(href=`?page=1${category ? `&category=${category}` : '' }`)
+            span(class=`page ${'1'==currentPage ? 'active': ''}`) 1
+          if(totalPage<=10)
+            +pageList(currentPage, 2, totalPage , category)
+            //- - for (var page=2; page<totalPage; page++)
+            //-     a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+            //-       span(class=`page ${page==currentPage ? 'active': ''}`)=page
+          else 
+            if (currentPage<5)  
+              +pageList(currentPage, 2, 8, category)     
+              //- - for (var page=2; page<=7; page++)
+              //-     a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+              //-       span(class=`page ${page==currentPage ? 'active': ''}`)=page
+              div ....
+            else if(currentPage>totalPage-4)
+              div ....
+              +pageList(currentPage, totalPage -4 , totalPage, category)
+              //- - for (var page= totalPage -4; page<totalPage; page++)
+              //-     a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+              //-       span(class=`page ${page==currentPage ? 'active': ''}`)=page   
+            else
+              div ....
+              +pageList(currentPage, currentPage -2, currentPage*1 +3, category)
+              //- - for (var page= currentPage -2; page<currentPage*1 + 3; page++)
+              //-     a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
+              //-       span(class=`page ${page==currentPage ? 'active': ''}`)=page 
+              div ....
+          a.text-decoration-none(href=`?page=${totalPage}${category ? `&category=${category}` : '' }`)
+            span(class=`page ${totalPage==currentPage ? 'active': ''}`)=totalPage
+          if (totalPage != currentPage)
+            a(href=`?page=${currentPage *1 +1}${category ? `&category=${category}` : '' }`)
+              span next

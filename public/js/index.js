@@ -120,8 +120,7 @@ if (userDataForm)
     updateSettings(form, 'data');
   });
 
-console.log(newPostForm, "newPOst form");
-console.log("new post")
+
 if(newPostForm)
   newPostForm.addEventListener('submit', e => {
     e.preventDefault();

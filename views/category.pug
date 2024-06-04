@@ -1,25 +1,32 @@
 extend adminbase 
 
+//- include _pagination
+
 block content
-    main.main 
-        form.form.form--category
-            .form__group
-            label.form__label(for='name') Category Name
-            .flex
-                input#name.form__input(type='text', placeholder='History', required)
-                button.btn.btn--green Create
-         
-        .container--table  
-            table.table 
-                tr 
-                    th Name
-                    th delete
-                    th edit
-                each catz in categories
+    main.main-admin 
+        .categoryContainer
+            form.form.form--category
+                .form__group
+                label.form__label(for='name') Category Name
+                .flex
+                    input#name.form__input(type='text', placeholder='History', required)
+                    button.btn.btn--green Create
+            
+            .container--table  
+                table.table 
                     tr 
-                        td.text-color-blue= catz.name  
-                        td 
-                            btn.text-decoration-none.btnDelete--category(type="text" data-catid=catz._id)  DELETE
-                        td 
-                            button.btnEdit--category.btn.btn--green(data-edit=catz) EDIT
-                              
+                        th NAME
+                        th DELETE
+                        th EDIT
+                    each catz in categories
+                        tr 
+                            td.text-color-blue= catz.name  
+                            td     
+                                i(class="fa-solid fa-trash fa-large fa-red btnDelete--category"  data-catid=catz._id)
+                                    //- button.btnDelete--category(type="text" data-catid=catz._id)
+                            td
+                                i(class="fa-solid fa-file-pen fa-large fa-green btnEdit--category" data-edit=catz)
+                                //-   button.btnEdit--category(data-edit=catz) edit 
+                                    
+        //- section(class="")
+        //-     +pagination(currentPage, totalPage)

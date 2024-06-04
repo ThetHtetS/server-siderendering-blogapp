@@ -26,12 +26,23 @@ exports.getAllCategories = catchAsync(async (req, res, next) => {
  
 exports.getAllPosts = catchAsync(async (req, res, next) => {
   // 1) Get post data from collection
+  req.query.limit = 3;
   const features = new APIFeatures(postModel.find(), req.query)
       .filter()
       .sort()
       .limitFields()
       .paginate();
-  const currentPage = req.query.page;
+  const currentPage = req.query.page || 1;
+  let filter = {};
+  if (req.query.category) filter.category= new mongoose.Types.ObjectId(req.query.category) 
+ 
+  const total = await postModel.aggregate([
+    { $match: filter} ,
+    { $count: 'total' } 
+  ]);
+  
+  let totalDocument = total[0] ? total[0].total : 0;
+  let totalPage = Math.ceil(totalDocument/req.query.limit);
   const posts = await features.query.populate('author');
   const categories = await categoryModel.find();
   // 2) Build template
@@ -41,21 +52,22 @@ exports.getAllPosts = catchAsync(async (req, res, next) => {
     posts,
     categories,
     link: "/admin/posts",
-    currentPage
+    currentPage,
+    totalPage
   });
-});
+}); 
+
 
 exports.newPost = catchAsync(async (req, res, next) => {
-
   const categories = await categoryModel.find();
-  
   res.status(200).render("post_add", { categories, link: "/admin/post/new" });
 });
 
+
+
 exports.editPost = catchAsync(async (req, res, next) => {
   const post = await postModel.findById( req.params.id )
-  const categories = await categoryModel.find();
-  
+  const categories = await categoryModel.find();  
   res.status(200).render("post_add", { categories , post , link: "/admin/post/new" });
 });
 
@@ -63,12 +75,25 @@ exports.editPost = catchAsync(async (req, res, next) => {
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   // 1) Get user data list from collection
+  req.query.limit = 6;
   const features = new APIFeatures(userModel.find(), req.query)
       .filter()
       .sort()
       .limitFields()
       .paginate();
- 
+  
+      const currentPage = req.query.page || 1;
+      let filter = {};
+      if (req.query.category) filter.category= new mongoose.Types.ObjectId(req.query.category) 
+     
+      const total = await userModel.aggregate([
+        { $match: filter} ,
+        { $count: 'total' } 
+      ]);
+      
+      let totalDocument = total[0] ? total[0].total : 0;
+      let totalPage = Math.ceil(totalDocument/req.query.limit);
+    
   const users = await features.query;
 
   // 2) Build template
@@ -77,5 +102,9 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     title: "All User",
     users,
     link: "/admin/users",
+    currentPage,
+    totalPage
   });
 });
+
+

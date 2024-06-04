@@ -2,6 +2,7 @@ extends base
 include _postCard
 include _miniPostCard
 include _postCard1
+include _pagination
 
 block content
    //-  include _heroSection
@@ -30,44 +31,5 @@ block content
           each post in posts 
            +postCard1(post)
     section(class="")
-      //- -let pages = [1,2,3,4,5]
-      .paginationContainer
-        if (currentPage != 1)
-          a(href=`?page=${currentPage *1 -1}${category ? `&category=${category}` : '' }`)
-            span previous
-        a.text-decoration-none(href=`?page=1${category ? `&category=${category}` : '' }`)
-          span(class=`page ${'1'==currentPage ? 'active': ''}`) 1
-        if(totalPage<=10)
-          - for (var page=2; page<totalPage; page++)
-              a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
-                span(class=`page ${page==currentPage ? 'active': ''}`)=page
-        else 
-          if (currentPage<5)          
-            - for (var page=2; page<=7; page++)
-                a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
-                  span(class=`page ${page==currentPage ? 'active': ''}`)=page
-            div ....
-          else if(currentPage>totalPage-4)
-            div ....
-            - for (var page= totalPage -4; page<totalPage; page++)
-                a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
-                  span(class=`page ${page==currentPage ? 'active': ''}`)=page   
-          else
-            div ....
-            - for (var page= currentPage -2; page<=currentPage*1 + 2; page++)
-                a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
-                  span(class=`page ${page==currentPage ? 'active': ''}`)=page 
-            div ....
-        a.text-decoration-none(href=`?page=${totalPage}${category ? `&category=${category}` : '' }`)
-          span(class=`page ${totalPage==currentPage ? 'active': ''}`)=totalPage
-        if (totalPage != currentPage)
-          a(href=`?page=${currentPage *1 +1}${category ? `&category=${category}` : '' }`)
-            span next
-
-    //- section(class= "latest")
-    //-   div(class= "postContainer") 
-    //-     div(class="main-post")
-    //-       +postCard(posts[0])
-    //-     div(class="side-post")
-    //-       each post, index in side_post
-    //-         +miniPostCard(post, index)
+      +pagination(currentPage, totalPage, category)
+      

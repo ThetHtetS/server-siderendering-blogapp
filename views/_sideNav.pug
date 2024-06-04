@@ -8,8 +8,7 @@ mixin navItem(link, text, icon, active)
 
 .admin-nav
     #adminMenuCloseBtn
-      svg(width="32px", height="32px")
-        use(xlink:href="http://localhost:4000/img/icons.svg#icon-menu")
+      i(class="fa fa-times fa-white" aria-hidden="true") 
     h5.admin-nav__heading Admin
     ul.side-nav
         +navItem('/admin', 'Dashboard', 'map', link=='/admin' ? true : false)

@@ -1,21 +1,26 @@
 extend adminbase 
 
+include _pagination
+
 block content
-    main.main 
+    main.main-admin 
         .container--table
-            table.table 
+            table.table.user 
                 tr 
-                    th Name
-                    th Email
-                    th Role
-                    th Delete
-                    th Edit
+                    th NAME
+                    th EMAIL
+                    th ROLE
+                    th DELETE
+                    th EDIT
                 each user in users
                     tr 
                         td.text-color-blue= user.name  
                         td.text-color-blue= user.email
                         td.text-color-blue= user.role
                         td 
-                            btn.text-decoration-none#delete(type="text" data-user_id=user._id)  DELETE
+                            i(class="fa-solid fa-trash fa-large fa-red btnDelete--user"  data-user_id=user._id)
+                                //-  #delete(type="text" data-user_id=user._id)  DELETE
                         td 
-                            a.text-decoration-none(href="http://")  EDIT 
+                            i(class="fa-solid fa-file-pen fa-large fa-green .btnEdit--category")
+        section
+            +pagination(currentPage, totalPage, category)
