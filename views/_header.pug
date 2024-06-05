@@ -1,7 +1,12 @@
 
 nav
-  .nav__el.logo 
+  .logo 
+    #userMenuBtn 
+      a
+        i(class="fa fa-bars" aria-hidden="true")
+    .logo 
       a EssenceExplorer 
+  
   ul  
     li.nav__el.hideOnMobile 
       a(href="/") Home 
@@ -20,10 +25,10 @@ nav
         a(href='/login') Log in
       li.nav__el.nav__el--cta.hideOnMobile 
         a(href='/signup') Sign up 
-
-    li.nav__el#userMenuBtn 
-      a
-        i(class="fa fa-bars" aria-hidden="true")
+    li.nav__el.hideOnDesktop.searchBtn
+      a(href="/") 
+        i(class="fa-solid fa-magnifying-glass fa-black")
+   
 
 
                        //-/////////////////////////nav sidebar /////////////////////////////
