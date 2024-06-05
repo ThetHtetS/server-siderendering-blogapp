@@ -990,13 +990,16 @@
       cursor: pointer;
       border: 1px solid black;
     }
-
+    /* section .category-homepage a {
+      width: 100%;
+    } */
     section .category-homepage .name{
       padding: 1rem;
       font-size: 1.4rem;
       background: white;
       border-radius: 2rem;
       cursor: pointer;
+      display: inline;
      }
      section .category-homepage {
       display: flex;
@@ -1023,6 +1026,7 @@
       background: white;
       border-radius: 2rem;
       cursor: pointer;
+      display: inline;
      }
 
      section .category-homepage {

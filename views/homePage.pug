@@ -19,8 +19,8 @@ block content
     section(class="category-homepage")
       .category-homepage
         each category in categories 
-          a.text-decoration-none(href=`?category=${category._id}`)
-           div(class="name")=category.name
+          a.text-decoration-none.name(href=`?category=${category._id}`)=category.name
+            
     section(class= "")
       .tabContainer
         if postByCat
