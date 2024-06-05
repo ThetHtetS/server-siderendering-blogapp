@@ -1434,7 +1434,7 @@
   }
 
   .container--table {
-    padding: 2rem;
+    /* padding: 2rem; */
     /* margin-top: 30px; */
     min-height: 300px;
     /* font-size: 1.6rem; */
@@ -1673,7 +1673,7 @@
      flex: 1 10;
    }
    .main-admin {
-    padding: 1rem;
+    padding: 2rem;
     height: 87vh;
     overflow-y: scroll;
     background-color: white;
@@ -1691,15 +1691,6 @@
     align-items: center;
     gap: 1.5em;
   }
-
-  /* .main-post {
-   width: 65%;
-   align-self: stretch;
-  }
-  .side-post{
-    width: 35%;
-    flex: 1 10;
-  } */
 
   .postCard {
     overflow: hidden;
