@@ -999,7 +999,7 @@
       background: white;
       border-radius: 2rem;
       cursor: pointer;
-      display: inline;
+      white-space: nowrap;
      }
      section .category-homepage {
       display: flex;
@@ -1026,7 +1026,8 @@
       background: white;
       border-radius: 2rem;
       cursor: pointer;
-      display: inline;
+      white-space: nowrap;
+      overflow: hidden;
      }
 
      section .category-homepage {
