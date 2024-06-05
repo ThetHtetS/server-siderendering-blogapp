@@ -1,7 +1,6 @@
 extends base
-include _postCard
-include _miniPostCard
-include _postCard1
+
+include _postCards
 include _pagination
 
 block content
@@ -17,8 +16,8 @@ block content
         div(class="side-post")
           each post, index in side_post
             +miniPostCard(post, index)
-    section(class="category")
-      .category
+    section(class="category-homepage")
+      .category-homepage
         each category in categories 
           a.text-decoration-none(href=`?category=${category._id}`)
            div(class="name")=category.name

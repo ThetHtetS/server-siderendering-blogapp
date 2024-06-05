@@ -990,6 +990,13 @@
       cursor: pointer;
       border: 1px solid black;
     }
+    section .category-homepage .name{
+      padding: 1rem;
+      font-size: 1.4rem;
+      background: white;
+      border-radius: 2rem;
+      cursor: pointer;
+     }
 
   }
   
@@ -1001,6 +1008,13 @@
       cursor: pointer;
       border: 1px solid black;
     }
+    section .category .name{
+      padding: 1rem 2rem;
+      font-size: 1.8rem;
+      background: white;
+      border-radius: 2rem;
+      cursor: pointer;
+     }
   }
   
 
@@ -1843,21 +1857,20 @@
     gap: 20px;
   } 
 
-  section .category {
+  section .category-homepage {
     display: flex;
     align-items: center;
     gap: 3rem;
     justify-content: center;
     padding: 3rem 0rem;
+    overflow-x: scroll;
   }
-  section .category .name{
-   padding: 1rem 2rem;
-   font-size: 1.8rem;
-   background: white;
-   border-radius: 2rem;
-   cursor: pointer;
+  
+  section .category-homepage::-webkit-scrollbar {
+    display: none;
   }
-  section .category .name.active{
+
+  section .category-homepage .name.active{
     /* padding: 1rem 2rem;
     font-size: 2rem; */
     background: black;
