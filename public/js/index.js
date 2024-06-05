@@ -47,7 +47,7 @@ if(userMenuCloseBtn)
  { var sidebar = document.querySelector('.sidebar--nav');
   var main = document.querySelector('.main')
   main.addEventListener('click', ()=> {
-    // sidebar.style.transform ="translateX(+300px)"
+    sidebar.style.transform ="translateX(-280px)"
     main.style.opacity="1"
   })
   userMenuCloseBtn.addEventListener('click', ()=> {
