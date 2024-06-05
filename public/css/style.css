@@ -990,6 +990,7 @@
       cursor: pointer;
       border: 1px solid black;
     }
+
     section .category-homepage .name{
       padding: 1rem;
       font-size: 1.4rem;
@@ -997,6 +998,14 @@
       border-radius: 2rem;
       cursor: pointer;
      }
+     section .category-homepage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 1rem;
+      overflow-x: scroll;
+    }
 
   }
   
@@ -1008,13 +1017,22 @@
       cursor: pointer;
       border: 1px solid black;
     }
-    section .category .name{
+    section .category-homepage .name{
       padding: 1rem 2rem;
       font-size: 1.8rem;
       background: white;
       border-radius: 2rem;
       cursor: pointer;
      }
+
+     section .category-homepage {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      justify-content: center;
+      padding: 3rem 0rem;
+      overflow-x: scroll;
+    }
   }
   
 
@@ -1857,15 +1875,8 @@
     gap: 20px;
   } 
 
-  section .category-homepage {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    justify-content: center;
-    padding: 3rem 0rem;
-    overflow-x: scroll;
-  }
-  
+ 
+
   section .category-homepage::-webkit-scrollbar {
     display: none;
   }
