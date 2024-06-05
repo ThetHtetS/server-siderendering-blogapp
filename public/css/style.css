@@ -2105,8 +2105,8 @@ nav div {
 
 @media screen and (max-width: 600px) {
   .sidebar--nav {
-    width: 300px;
-    transform: translateX(+300px);
+    width: 280px;
+    transform: translateX(-280px);
   }
 }
 
