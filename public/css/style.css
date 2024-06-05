@@ -1673,7 +1673,7 @@
      flex: 1 10;
    }
    .main-admin {
-    padding: 2;
+    padding: 1rem;
     height: 87vh;
     overflow-y: scroll;
     background-color: white;
