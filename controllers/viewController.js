@@ -6,37 +6,38 @@ const AppError = require("../utils/appError");
 const APIFeatures = require('../utils/appFeatures');
 const mongoose = require('mongoose');
 
-// exports.getOverview = catchAsync(async (req, res, next) => {
-//   // 1) Get tour data from collection
-//   const featuredPosts = await postModel.find().limit(4);
-  
-//   req.query.limit = 3;
-//   const features = new APIFeatures(postModel.find(), req.query)
-//   .filter()
-//   .sort()
-//   .limitFields()
-//   .paginate();
-
-//   const postByCat = await features.query;
-//   const categories = await categroyModel.find();
-//   // 2) Build template
-//   // 3) Render that template using tour data from 1)
-//   res.status(200).render("homePage", {
-//     title: "Exploring the Essence",
-//     featuredPosts,
-//     categories,
-//     postByCat,
-//   });
-// });
-
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
+  // const featuredPosts = await postModel.find().limit(4);
+  
+  // req.query.limit = 3;
+  // const features = new APIFeatures(postModel.find(), req.query)
+  // .filter()
+  // .sort()
+  // .limitFields()
+  // .paginate();
+  
+  const featuredPosts = await postModel.find().limit(4);
+  // const postByCat = await features.query;
+  const categories = await categroyModel.find();
+  // 2) Build template
+  // 3) Render that template using tour data from 1)
+  res.status(200).render("homePage", {
+    title: "Exploring the Essence",
+    featuredPosts,
+    categories,
+    // postByCat,
+  });
+});
+
+
+exports.getPosts = catchAsync(async (req, res, next) => {
+  // 1) Get tour data from collection
  
-  req.query.limit = 3;
+  req.query.limit = 6;
   const currentPage = req.query.page || 1;
   const category = req.query.category;
 
-  const featuredPosts = await postModel.find().limit(4);
   const categories = await categroyModel.find();
   let filter = {};
   if (req.query.category) filter.category= new mongoose.Types.ObjectId(req.query.category) 
@@ -53,15 +54,14 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   .sort()
   .limitFields()
   .paginate();
-  const postByCat = await features.query;
+  const posts = await features.query;
 
   // 2) Build template
   // 3) Render that template using tour data from 1)
-  res.status(200).render("homePage", {
+  res.status(200).render("userPosts", {
     title: "Exploring the Essence",
-    featuredPosts,
     categories,
-    postByCat,
+    posts,
     currentPage,
     category,
     totalPage
@@ -93,17 +93,20 @@ exports.getLoginForm = (req, res) => {
   });
 };
 
+
 exports.getSignUpForm = (req, res) => {
   res.status(200).render("signup", {
     title: "Sign up your account",
   });
 };
 
+
 exports.getAccount = (req, res) => {
   res.status(200).render("account", {
     title: "Your account",
   });
 };
+
 
 exports.updateUserData = catchAsync(async (req, res, next) => {
   const updatedUser = await userModel.findByIdAndUpdate(

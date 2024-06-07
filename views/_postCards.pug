@@ -7,7 +7,7 @@ mixin postCard(post)
             a.text-decoration-none(href=`/post/${post.slug}`)
              .card__title= post.title
             .card__data
-                p this is some text for paragraph introduction this is some text for paragraph introduction this is some text for paragraph introduction this is some text for paragraph introduction
+                p=`${post.body.slice(0, 50)}`
             .card__footer 
                 p Thet Htet Soe
                 span= post.createdAt.toLocaleString('en-us', { year: "numeric", month: "2-digit", day: "numeric"})
@@ -21,7 +21,7 @@ mixin postCard1(post)
             a.text-decoration-none(href=`/post/${post.slug}`)
              .card__title= post.title
             .card__data
-                p  text for paragraph introduction this is some text for paragraph introduction
+                p=`${post.body.slice(0, 50)}`
             .card__footer 
                 p Thet Htet Soe
                 span= post.createdAt.toLocaleString('en-us', { year: "numeric", month: "2-digit", day: "numeric"})

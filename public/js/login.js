@@ -32,8 +32,8 @@ export const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: '/api/v1/users/login',
-      // url: 'http://localhost:4000/api/v1/users/login',
+      // url: '/api/v1/users/login',
+      url: 'http://localhost:4000/api/v1/users/login',
       data: {
         email,
         password

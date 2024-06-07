@@ -1,0 +1,20 @@
+extends base
+
+include _postCards
+include _pagination
+
+block content
+    main.main 
+        section(class= "")
+            .tabContainer
+                if posts.length
+                    each post in posts
+                        +postCard1(post)
+                else 
+                    .noResultContainer No Posts!
+                        //- else 
+                        //-     each post in posts 
+        
+        if posts.length
+            section(class="")
+                +pagination(currentPage, totalPage, category)

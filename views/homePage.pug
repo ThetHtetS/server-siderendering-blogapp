@@ -1,7 +1,6 @@
 extends base
 
 include _postCards
-include _pagination
 
 block content
    //-  include _heroSection
@@ -16,19 +15,5 @@ block content
         div(class="side-post")
           each post, index in side_post
             +miniPostCard(post, index)
-    section(class="category-homepage")
-      .category-homepage
-        each category in categories 
-          a.text-decoration-none.name(href=`?category=${category._id}`)=category.name
-            
-    section(class= "")
-      .tabContainer
-        if postByCat
-          each post in postByCat
-            +postCard1(post)
-        else 
-          each post in posts 
-           +postCard1(post)
-    section(class="")
-      +pagination(currentPage, totalPage, category)
+
       

@@ -10,8 +10,8 @@ nav
   ul  
     li.nav__el.hideOnMobile 
       a(href="/") Home 
-    li.nav__el.hideOnMobile
-      a category
+    //- li.nav__el.hideOnMobile
+    //-   a category
     
     if user
       li.nav__el.nav__el--logout.hideOnMobile 
@@ -28,18 +28,30 @@ nav
     li.nav__el.hideOnDesktop.searchBtn
       a(href="/") 
         i(class="fa-solid fa-magnifying-glass fa-black")
-   
+if categories
+  section(class="category-homepage")
+      .category-homepage 
+          a.name(href=`/posts` class=`${!category ? 'active': ''}`) All
+          each cat in categories 
+              a.text-decoration-none.name(class=`${cat._id==category ? 'active' : ''}` href=`/posts?category=${cat._id}`)=cat.name
 
 
                        //-/////////////////////////nav sidebar /////////////////////////////
 .sidebar--nav
+  nav
+    .logo 
+      #userMenuCloseBtn 
+        a
+          i(class="fa fa-bars" aria-hidden="true")
+      .logo 
+        a EssenceExplorer 
   ul
-    li#userMenuCloseBtn 
-      i(class="fa fa-times" aria-hidden="true") 
+    //- li.flex
+    //-   div EssenceExplorer
+    //-   i#userMenuCloseBtn(class="fa fa-times" aria-hidden="true")
+       
     li
       a(href="/") Home 
-    li
-      a category
     if user
       li 
         a Log out
@@ -49,6 +61,6 @@ nav
           span= user.name.split(' ')[0]
     else
       li 
-        a.nav__el(href='/login') Log in
+        a(href='/login') Log in
       li 
-        a.nav__el.nav__el--cta(href='/signup') Sign up 
+        a.nav__el--cta(href='/signup') Sign up 

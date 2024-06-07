@@ -22,7 +22,7 @@ block content
                       a.edit(href=`/admin/post/${post._id}`)
                         i(class="fa-solid fa-file-pen fa-large fa-green")
                     td 
-                      i(class="fa-solid fa-trash fa-large fa-red")
+                      i.btnDelete--post(class="fa-solid fa-trash fa-large fa-red" data-post_id=post._id)
                       //- button.btnDelete--post.btn--round.btn--red(data-post_id=post._id)
                         
       section
