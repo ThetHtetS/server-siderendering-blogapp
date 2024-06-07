@@ -62,3 +62,27 @@ export const logout = async () => {
     showAlert('error', 'Error logging out! Try again.');
   }
 };
+
+
+export const forgotPassword = async (email) => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      // url: '/api/v1/users/login',
+      url: 'http://localhost:4000/api/v1/users/forgotPassword',
+      data: {
+        email
+      }
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'Password reset link has been sent to your email!');
+      // window.setTimeout(() => {
+      //   location.assign('/');
+      // }, 1500);
+    }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};
+

@@ -87,6 +87,7 @@ exports.getPost = catchAsync(async (req, res, next) => {
   });
 });
 
+
 exports.getLoginForm = (req, res) => {
   res.status(200).render("login", {
     title: "Log into your account",
@@ -106,6 +107,10 @@ exports.getAccount = (req, res) => {
     title: "Your account",
   });
 };
+
+exports.getForgotPasswordForm =( req, res)=>{
+  res.status(200).render("forgotPassword", {title: 'Reset Password'})
+}
 
 
 exports.updateUserData = catchAsync(async (req, res, next) => {

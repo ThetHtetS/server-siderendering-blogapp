@@ -1,4 +1,4 @@
-import { login, signup, logout } from './login';
+import { login, signup, logout, forgotPassword } from './login';
 import { createCatz, deleteCatz } from './catz';
 import { createPost, deletePost } from './post';
 import { updateSettings } from './updateSettings';
@@ -9,6 +9,7 @@ const newCatzForm = document.querySelector('.form--category');
 const signupForm = document.querySelector('.form--signup');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
+const forgotPasswordForm = document.querySelector('.form--forgotPassword');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const newPostForm = document.querySelector('#form--post');
 const commentForm = document.querySelector('.form--comment');
@@ -97,6 +98,15 @@ if (loginForm)
     const password = document.getElementById('password').value;
     login(email, password);
   });
+
+
+if (forgotPasswordForm)
+  forgotPasswordForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  forgotPassword(email);
+});
+
 
 if (signupForm)
   signupForm.addEventListener('submit', e => {
