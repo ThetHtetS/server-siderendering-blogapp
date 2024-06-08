@@ -183,7 +183,6 @@ exports.checkAuthororAdmin = () => {
   return async( req, res, next ) => {
     if( req.user.role === 'author' ){
       let post = await postModel.findById(req.params.id).select('author');
-      console.log(post)
         if( ! req.user.id === post.author ) {
             return next(
               new AppError('You do not have permission, author can only edit your own post', 403)
