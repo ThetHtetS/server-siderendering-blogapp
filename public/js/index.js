@@ -1,4 +1,4 @@
-import { login, signup, logout, forgotPassword } from './login';
+import { login, signup, logout, forgotPassword, resetPassword } from './login';
 import { createCatz, deleteCatz } from './catz';
 import { createPost, deletePost } from './post';
 import { updateSettings } from './updateSettings';
@@ -10,6 +10,7 @@ const signupForm = document.querySelector('.form--signup');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const forgotPasswordForm = document.querySelector('.form--forgotPassword');
+const resetPasswordForm = document.querySelector('.form--resetPassword');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const newPostForm = document.querySelector('#form--post');
 const commentForm = document.querySelector('.form--comment');
@@ -108,13 +109,28 @@ if (forgotPasswordForm)
 });
 
 
+console.log(resetPasswordForm);
+if (resetPasswordForm)
+  {  console.log(document.getElementById('resetPasswordToken'));
+    console.log(document.getElementById('resetPasswordToken').dataset);
+    resetPasswordForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+    console.log(document.getElementById('resetPasswordToken'));
+    let token = document.getElementById('resetPasswordToken').dataset.resettoken;
+    console.log(document.getElementById('resetPasswordToken').dataset);
+    resetPassword(password, passwordConfirm, token);
+  })
+}
+
 if (signupForm)
   signupForm.addEventListener('submit', e => {
     e.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const passwordConfirm = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
     signup(name, email, password, passwordConfirm);
   });
 

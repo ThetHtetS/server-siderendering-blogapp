@@ -112,6 +112,10 @@ exports.getForgotPasswordForm =( req, res)=>{
   res.status(200).render("forgotPassword", {title: 'Reset Password'})
 }
 
+exports.getresetPasswordForm =( req, res)=>{
+  res.status(200).render("resetPassword", {title: 'Reset Password', token: req.params.token })
+}
+
 
 exports.updateUserData = catchAsync(async (req, res, next) => {
   const updatedUser = await userModel.findByIdAndUpdate(

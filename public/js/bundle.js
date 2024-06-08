@@ -5461,7 +5461,7 @@ var showAlert = exports.showAlert = function showAlert(type, msg) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signup = exports.logout = exports.login = exports.forgotPassword = void 0;
+exports.signup = exports.resetPassword = exports.logout = exports.login = exports.forgotPassword = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 var _alerts = require("./alerts");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -5622,6 +5622,47 @@ var forgotPassword = exports.forgotPassword = /*#__PURE__*/function () {
   }));
   return function forgotPassword(_x7) {
     return _ref4.apply(this, arguments);
+  };
+}();
+var resetPassword = exports.resetPassword = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(password, passwordConfirm, token) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.prev = 0;
+          _context5.next = 3;
+          return (0, _axios.default)({
+            method: 'patch',
+            // url: '/api/v1/users/login',
+            url: "http://localhost:4000/api/v1/users/resetPassword/".concat(token),
+            data: {
+              password: password,
+              passwordConfirm: passwordConfirm
+            }
+          });
+        case 3:
+          res = _context5.sent;
+          if (res.data.status === 'success') {
+            (0, _alerts.showAlert)('success', 'Password reset link has been sent to your email!');
+            // window.setTimeout(() => {
+            //   location.assign('/');
+            // }, 1500);
+          }
+          _context5.next = 10;
+          break;
+        case 7:
+          _context5.prev = 7;
+          _context5.t0 = _context5["catch"](0);
+          (0, _alerts.showAlert)('error', _context5.t0.response.data.message);
+        case 10:
+        case "end":
+          return _context5.stop();
+      }
+    }, _callee5, null, [[0, 7]]);
+  }));
+  return function resetPassword(_x8, _x9, _x10) {
+    return _ref5.apply(this, arguments);
   };
 }();
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"catz.js":[function(require,module,exports) {
@@ -5931,6 +5972,7 @@ var signupForm = document.querySelector('.form--signup');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
 var forgotPasswordForm = document.querySelector('.form--forgotPassword');
+var resetPasswordForm = document.querySelector('.form--resetPassword');
 var logOutBtn = document.querySelector('.nav__el--logout');
 var newPostForm = document.querySelector('#form--post');
 var commentForm = document.querySelector('.form--comment');
@@ -6008,12 +6050,26 @@ if (forgotPasswordForm) forgotPasswordForm.addEventListener('submit', function (
   var email = document.getElementById('email').value;
   (0, _login.forgotPassword)(email);
 });
+console.log(resetPasswordForm);
+if (resetPasswordForm) {
+  console.log(document.getElementById('resetPasswordToken'));
+  console.log(document.getElementById('resetPasswordToken').dataset);
+  resetPasswordForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var password = document.getElementById('password').value;
+    var passwordConfirm = document.getElementById('passwordConfirm').value;
+    console.log(document.getElementById('resetPasswordToken'));
+    var token = document.getElementById('resetPasswordToken').dataset.resettoken;
+    console.log(document.getElementById('resetPasswordToken').dataset);
+    (0, _login.resetPassword)(password, passwordConfirm, token);
+  });
+}
 if (signupForm) signupForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var name = document.getElementById('name').value;
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-  var passwordConfirm = document.getElementById('password').value;
+  var passwordConfirm = document.getElementById('passwordConfirm').value;
   (0, _login.signup)(name, email, password, passwordConfirm);
 });
 if (logOutBtn) logOutBtn.addEventListener('click', _login.logout);
@@ -6118,7 +6174,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41601" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44871" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

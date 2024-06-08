@@ -25,6 +25,7 @@
     "express-rate-limit": "^7.1.5",
     "express-xss-sanitizer": "^1.1.8",
     "helmet": "^7.1.0",
+    "html-to-text": "^9.0.5",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^8.0.3",

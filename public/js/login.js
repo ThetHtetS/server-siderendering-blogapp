@@ -42,9 +42,9 @@ export const login = async (email, password) => {
 
     if (res.data.status === 'success') {
       showAlert('success', 'Logged in successfully!');
-      // window.setTimeout(() => {
-      //   location.assign('/');
-      // }, 1500);
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1000);
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
@@ -77,9 +77,33 @@ export const forgotPassword = async (email) => {
 
     if (res.data.status === 'success') {
       showAlert('success', 'Password reset link has been sent to your email!');
-      // window.setTimeout(() => {
-      //   location.assign('/');
-      // }, 1500);
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1000);
+    }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};
+
+
+export const resetPassword = async (password,passwordConfirm, token) => {
+  try {
+    const res = await axios({
+      method: 'patch',
+      // url: '/api/v1/users/login',
+      url: `http://localhost:4000/api/v1/users/resetPassword/${token}`,
+      data: {
+        password,
+        passwordConfirm
+      }
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'your password has been reset successfully!');
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1000);
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
