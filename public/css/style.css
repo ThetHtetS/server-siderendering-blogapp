@@ -1677,7 +1677,91 @@
        width: 100%;
        /* flex: 1 10; */
      }
+
+
   }
+  .dashboard-container {
+    padding: 0 2rem;
+  
+  }
+  
+  /* #myChart {
+    padding: 1rem;
+    margin-top: 3rem;
+    
+  } */
+
+  /* .actionLog {
+    
+   
+  } */
+  .viewChart-container {
+    padding-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  /* .actionLog--container {
+   
+  } */
+  .action {
+    padding: 1rem;
+  }
+  .actionLog--container .action {
+    min-width: 450px;
+    min-height: 260px;
+    border: 1px solid black;
+    max-height: 270px;
+    overflow-y: scroll;
+  }
+
+  .actionCard {
+    /* width: 100%; */
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    border-bottom: 1px solid rgb(178, 242, 253);
+  }
+  span.name {
+    font-weight: 700;
+  }
+  span.title {
+    font-weight: 700;
+  }
+ 
+  .dashboard-container .stat-data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+
+  }
+
+  .dashboard-container .stat-data > * {
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    min-height: 100px;
+    border: 1px solid black;
+    text-transform: uppercase;
+    /* width: 100%; */
+  }
+  .dashboard-container .title {
+    font-weight: bold;
+    padding-bottom: 2rem;
+  }
+
+
+  /* .dashboard-container .stat-data > * span{
+   color: #2612dd;
+   padding: 0 3px;
+  } */
+
   .noResultContainer {
     display: flex;
     justify-content: center;

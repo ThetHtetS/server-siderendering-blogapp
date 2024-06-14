@@ -16,7 +16,7 @@ export const createPost = async( form , data)=>{
           );
         }
         else {
-          res = await axios.post(`/api/v1/posts`, form, {
+          res = await axios.post(`http://localhost:4000/api/v1/posts`, form, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },

@@ -16,6 +16,7 @@ router
   authController.restrictTo("admin", 'author'),
   postController.uploadImages,
   postController.resizeImages,
+  postController.uploadS3,
   postController.setPostAuthorId,
   postController.createPost
 );

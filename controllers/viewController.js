@@ -1,6 +1,7 @@
 const postModel = require("../models/postModel");
 const userModel = require("../models/userModel");
 const categroyModel = require("../models/categoryModel")
+const actionModel= require('../models/actionModel')
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const APIFeatures = require('../utils/appFeatures');
@@ -55,7 +56,7 @@ exports.getPosts = catchAsync(async (req, res, next) => {
   .limitFields()
   .paginate();
   const posts = await features.query;
-
+  
   // 2) Build template
   // 3) Render that template using tour data from 1)
   res.status(200).render("userPosts", {
@@ -69,7 +70,8 @@ exports.getPosts = catchAsync(async (req, res, next) => {
 });
 
 exports.getPost = catchAsync(async (req, res, next) => {
-  // 1) Get the data, for the requested tour (including reviews and guides)
+  // 1) Get the data, for the requested post
+  
   const post = await postModel.findOne({ slug: req.params.slug }).populate({
     path: "comments",
     fields: "comment user",
@@ -79,11 +81,33 @@ exports.getPost = catchAsync(async (req, res, next) => {
     return next(new AppError("There is no post with that name.", 404));
   }
 
-  // 2) Build template
-  // 3) Render template using data from 1)
+  // 2) Get The View Count
+  var result = [];
+  var postLike;
+  if (post._id) {
+    result = await actionModel.aggregate([
+      { $match: {post: new mongoose.Types.ObjectId(post._id)}},
+      { $count: 'total' } 
+      ])
+     // 3) check the user already like post or not
+    postLike = await actionModel.find({
+    user: new mongoose.Types.ObjectId(req.user.id),
+    post: new mongoose.Types.ObjectId(post._id),
+    actionType: 'like'
+  })
+  
+    }
+   
+
+  let likeBoolean = postLike[0] ? true : false
+  let viewCount = result[0] ? result[0].total : 0;
+  // 3) Build template
+  // 4) Render template using data from 1)
   res.status(200).render("post", {
     title: `${post.title} `,
     post,
+    viewCount,
+    likeBoolean
   });
 });
 

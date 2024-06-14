@@ -11,7 +11,8 @@ block content
       - let side_post = featuredPosts.slice(1)
       div(class= "postContainer") 
         div(class="main-post")
-          +postCard(featuredPosts[0])
+          if (featuredPosts.length)
+            +postCard(featuredPosts[0])
         div(class="side-post")
           each post, index in side_post
             +miniPostCard(post, index)

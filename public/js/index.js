@@ -3,6 +3,8 @@ import { createCatz, deleteCatz } from './catz';
 import { createPost, deletePost } from './post';
 import { updateSettings } from './updateSettings';
 import { createComment } from './comment'
+import { createAction } from './action';
+import { LineChart } from './chart';
 
 const loginForm = document.querySelector('.form--login');
 const newCatzForm = document.querySelector('.form--category');
@@ -20,9 +22,31 @@ const btnDeletePost = document.querySelectorAll('.btnDelete--post')
 const userMenuBtn = document.getElementById('userMenuBtn');
 const userMenuCloseBtn = document.getElementById('userMenuCloseBtn');
 const adminMenuBtn = document.getElementById('adminMenuBtn');
-const adminMenuCloseBtn = document.getElementById('adminMenuCloseBtn')
+const adminMenuCloseBtn = document.getElementById('adminMenuCloseBtn');
+const postView = document.getElementById('post__container');
+const chart = document.getElementById('myChart');
+const likeIconFill = document.getElementById('like_icon--fill');
+const likeIconRegular = document.getElementById('like_icon--regular');
+
+
 var editMode = false; 
 var cat_id;
+
+if(chart) LineChart(); 
+
+if(likeIconFill)
+{   likeIconFill.addEventListener("click", ()=> {
+  const postId = document.getElementById('post').dataset.postid;
+  createAction(postId, "like");
+})
+}
+if (likeIconRegular) 
+  likeIconRegular.addEventListener("click", ()=> {
+    const postId = document.getElementById('post').dataset.postid;
+    createAction(postId, "like");
+    console.log("like");
+  })
+
 
 if(adminMenuCloseBtn)
   adminMenuCloseBtn.addEventListener('click', ()=>{
@@ -196,7 +220,12 @@ if(newPostForm)
    createComment({comment}, postId );
   });
 
-
+  if(postView)
+  {
+    const postId = document.getElementById('post').dataset.postid;
+    createAction(postId, "view")
+    
+  }
 
 // if(newCatBtn)
 //   newCatBtn.addEventListener('click', ()=>{

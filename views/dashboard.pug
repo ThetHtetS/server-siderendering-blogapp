@@ -1,5 +1,32 @@
 extends adminbase
 
 block content
-   main.main
-    h1 this is dashboard page
+   main.main-admin
+      .dashboard-container
+         .title This is dashboard page
+            .stat-data 
+               .data.fa-green 9 users      
+               .data.fa-red 300 posts 
+               .data.fa-blue 5000 comments
+               .data= ` views`
+         .viewChart-container
+            canvas(id="myChart" style="width:100%;max-width:500px; max-height: 300px")
+            .actionLog--container
+               title Activity Log
+               .action
+                  if (actionLogs.length)
+                     each action in actionLogs  
+                        .actionCard
+                           p
+                              span.name= action.user.name
+                              if (action.actionType == "view")
+                                 span= ` viewed `
+                              else if (action.actionType == "like")
+                                 span= ` liked `
+                              else
+                                 span= ` commented on `
+                              span.post--title=action.post.title
+                           
+                  
+
+

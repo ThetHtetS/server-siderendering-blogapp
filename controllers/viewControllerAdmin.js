@@ -1,12 +1,45 @@
 const postModel = require("../models/postModel");
 const userModel = require("../models/userModel");
+const actionModel = require('../models/actionModel');
 const categoryModel = require("../models/categoryModel");
 const catchAsync = require("../utils/catchAsync");
-const APIFeatures = require('../utils/appFeatures')
+const APIFeatures = require('../utils/appFeatures');
 //const AppError = require("../utils/appError");
 
 exports.adminOverview = catchAsync(async (req, res, next) => {
-  res.status(200).render("dashboard", { link: "/admin" });
+  // 1) get last seven day views
+    const day = new Date();
+    day.setDate(day.getDate() - 7); //subtract seven day
+    const weeklyViews = await actionModel.aggregate([
+      {
+        $match: {
+          createdAt: {
+            $gte: day
+          }
+        }
+      },
+      {
+        $group: {
+          _id: { $dayOfWeek: '$createdAt' },
+          numViews: { $sum: 1 },
+        }
+      }
+  ])
+   console.log(weeklyViews , "views");
+  // 2) get action log data
+  const features = new APIFeatures(actionModel.find(), req.query)
+  .filter()
+  .sort()
+  .limitFields()
+  .paginate();
+  
+  const actionLogs = await features.query.populate({
+    path: "user",
+    fields: "name",
+  }).populate({path: "post", fields: "title"});;
+ 
+
+  res.status(200).render("dashboard", { link: "/admin" , weeklyViews , actionLogs });
 });
 
 exports.createCategory = catchAsync(async (req, res, next) => {
