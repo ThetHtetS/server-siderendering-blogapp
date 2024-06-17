@@ -74,12 +74,12 @@ app.use("/images", (req, res, next) => {
   next();
 });
 console.log(process.env.NODE_ENV);
-// app.use((req,res,next) => {
-//   res.set({
-//     "Content-Security-Policy": "img-src *"
-//   })
-//   next();
-// })
+app.use((req,res,next) => {
+  res.set({
+    "Content-Security-Policy": "img-src *"
+  })
+  next();
+})
 app.use(express.static(path.join(__dirname, "public")));
 //app.use(express.static('public'));
 
