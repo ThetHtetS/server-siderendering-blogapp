@@ -16,7 +16,14 @@ export const createPost = async( form , data)=>{
           );
         }
         else {
-          res = await axios.post(`http://localhost:4000/api/v1/posts`, form, {
+          var url;
+          if(process.env.NODE_ENV == "production") {
+             url =  '/api/v1/posts'
+          }
+          else {
+             url = 'http://localhost:4000/api/v1/posts'
+          }
+          res = await axios.post(url, form, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },

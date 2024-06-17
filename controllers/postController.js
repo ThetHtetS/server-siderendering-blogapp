@@ -4,17 +4,25 @@ const Post = require('./../models/postModel');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
 const AppError = require('./../utils/appError');
-const AWS = require('aws-sdk');
+const { S3Client } = require("@aws-sdk/client-s3");
+const multerS3 = require('multer-s3');
+const dotenv = require("dotenv");
+// AWS.config.update({
+//   accessKeyId: process.env.accessKey,
+//   secretAccessKey: process.env.secretAccessKey,
+//   region: 'us-east-1'
+// });
+// const s3 = new AWS.S3();
+dotenv.config({ path: "./.env" });
+const s3 = new S3Client({
+  credentials: {
+      accessKeyId:  process.env.AWS_ACCESS_KEY_ID, // store it in .env file to keep it safe
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  },
+  region:  'us-east-1' // this is the region that you select in AWS account
+})
 
-AWS.config.update({
-  accessKeyId: process.env.accessKey,
-  secretAccessKey: process.env.secretAccessKey,
-  region: 'us-east-1'
-});
-
-const s3 = new AWS.S3();
-
-const multerStorage = multer.memoryStorage();
+// const multerStorage = multer.memoryStorage();
 
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
@@ -24,30 +32,92 @@ const multerFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({
-  storage: multerStorage,
-  fileFilter: multerFilter
-});
+const s3Storage = (folder) => multerS3({
+  s3: s3,
+  bucket: 'blogimagefile',
+  acl: 'public-read',
+  contentType: function(req, file, cb) {
+    cb(null, file.mimetype)
+  },
+  metadata: function (req, file, cb) {
+    cb(null, {fieldName: file.fieldname});
+  },
+  key: function (req, file, cb) {
+    cb(null, `${folder}/${Date.now()}`)
+  },
+})
 
-exports.uploadImages = upload.fields([
+// const s3Storage = multerS3({
+//   s3: s3,
+//   bucket: 'blogimagefile',
+//   // acl: 'public-read',
+//   metadata: function (req, file, cb) {
+//     cb(null, {fieldName: file.fieldname});
+//   },
+//   key: function (req, file, cb) {
+//     cb(null, `posts/${Date.now()}`)
+//   },
+  
+// })
+
+
+
+// const upload = multer({
+//   storage: multerStorage,
+//   fileFilter: multerFilter
+// });
+
+
+exports.uploadImages = (directory) => {
+ 
+  const upload = multer({
+    storage: s3Storage(directory),
+    fileFilter: (req, file, cb) => {
+       multerFilter(req, file, cb)
+    },
+  })
+
+  return upload.fields([
+  {name: 'photo', maxCount: 1},
   { name: 'imageCover', maxCount: 1 },
   { name: 'images', maxCount: 3 }
 ]);
+}
 
-// exports.uploadImages = upload.single('imageCover');
+// exports.uploadImages =  upload.single('imageCover');
 
+exports.saveFileLocation = ( req, res, next ) => {
+  if (!req.files.imageCover || !req.files.images) return next();
+
+  // 1) cover image
+  if(req.files) req.body.imageCover= req.files.imageCover[0].location;
+  console.log(req);
+  console.log(req.files)
+  console.log(req.body)
+ 
+  if(req.files.images){
+    req.body.images = [];
+    req.files.images.map( (file, i) => {
+        const filename = file.location;
+        req.body.images.push(filename);
+  })
+  }
+  if(req.files.photo) req.body.photo= req.files.photo[0].location;
+  next()
+}
+  
 // upload.single('image') req.file
 // upload.array('images', 5) req.files
 
 exports.resizeImages = catchAsync(async (req, res, next) => {
-  if (!req.files.imageCover || !req.files.images) return next();
+  // if (!req.files.imageCover || !req.files.images) return next();
   // 1) Cover image
   // req.body.imageCover = `post-${Date.now()}-cover.jpeg`;
-  await sharp(req.files.imageCover[0].buffer)
-    .resize(2000, 1333)
-    .toFormat('jpeg')
-    .jpeg({ quality: 90 })
-    .toBuffer();
+  // await sharp(req.files.imageCover[0].buffer)
+  //   .resize(2000, 1333)
+  //   .toFormat('jpeg')
+  //   .jpeg({ quality: 90 })
+  //   .toBuffer();
     // .toFile(`public/img/posts/${req.body.imageCover}`);
 
 
@@ -72,20 +142,20 @@ exports.resizeImages = catchAsync(async (req, res, next) => {
   //   })
   // );
 
-  next();
-});
+//   next();
+// });
 
-exports.uploadS3 = catchAsync(
-  async(req,res,next)=>{
-    console.log(req.files);
-    console.log(req.files[0].originalname)
-    const params = {
-      Bucket: 'blogimagefile',
-      Key: `${req.files[0].originalname}`,
-      Body: 'imageCover',
-      ContentType: req.file.mimetype,
-      ACL: 'public-read'
-    };
+// exports.uploadS3 = catchAsync(
+//   async(req,res,next)=>{
+//     console.log(req.files);
+//     console.log(req.files[0].originalname)
+//     const params = {
+//       Bucket: 'blogimagefile',
+//       Key: `${req.files[0].originalname}`,
+//       Body: 'imageCover',
+//       ContentType: req.file.mimetype,
+//       ACL: 'public-read'
+//     };
 
 
     // Store the image in S3
@@ -107,7 +177,7 @@ exports.uploadS3 = catchAsync(
 
 });
   
- 
+
 exports.getAllPosts =factory.getAll(Post);
 exports.getPost = factory.getOne( Post,  { path: 'comments' });
 

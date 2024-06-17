@@ -1,6 +1,7 @@
 const express = require('express');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const postController = require("../controllers/postController")
 
 const router = express.Router();
 
@@ -19,8 +20,11 @@ router.get('/', userController.getAllUsers);
 router.patch('/updateMyPassword', authController.updatePassword);
 router.patch(
     '/updateMe',
-    userController.uploadUserPhoto,
-    userController.resizeUserPhoto,
+    postController.uploadImages("users"),
+    // postController.saveFileLocation,
+    // userController.uploadUserPhoto,
+    // userController.resizeUserPhoto,
+
     userController.updateMe
   );
 

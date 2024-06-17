@@ -5,10 +5,18 @@ import { showAlert } from './alerts';
 
 export const signup = async (name, email, password, passwordConfirm) => {
   try {
+    var url;
+    if(process.env.NODE_ENV == "production") {
+       url =  '/api/v1/users/signup'
+    }
+    else {
+       url = 'http://localhost:4000/api/v1/users/signup'
+    }
+   
     const res = await axios({
       method: 'POST',
-      url: '/api/v1/users/signup',
-      // url: 'http://localhost:4000/api/v1/users/signup',
+      url,
+      // url: ,
       data: {
         name,
         email,
@@ -29,11 +37,18 @@ export const signup = async (name, email, password, passwordConfirm) => {
 };
 
 export const login = async (email, password) => {
-  try {
+  try { 
+    var url;
+    if(process.env.NODE_ENV == "production") {
+       url =  '/api/v1/users/login'
+    }
+    else {
+       url = 'http://localhost:4000/api/v1/users/login'
+    }
     const res = await axios({
       method: 'POST',
       // url: '/api/v1/users/login',
-      url: 'http://localhost:4000/api/v1/users/login',
+      url,
       data: {
         email,
         password
@@ -68,8 +83,8 @@ export const forgotPassword = async (email) => {
   try {
     const res = await axios({
       method: 'POST',
-      // url: '/api/v1/users/login',
-      url: 'http://localhost:4000/api/v1/users/forgotPassword',
+      url: '/api/v1/users/login',
+      // url: 'http://localhost:4000/api/v1/users/forgotPassword',
       data: {
         email
       }
@@ -91,8 +106,8 @@ export const resetPassword = async (password,passwordConfirm, token) => {
   try {
     const res = await axios({
       method: 'patch',
-      // url: '/api/v1/users/login',
-      url: `http://localhost:4000/api/v1/users/resetPassword/${token}`,
+      url: '/api/v1/users/login',
+      // url: `http://localhost:4000/api/v1/users/resetPassword/${token}`,
       data: {
         password,
         passwordConfirm

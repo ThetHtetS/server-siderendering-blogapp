@@ -14,9 +14,10 @@ router
 .post(
   authController.protect,
   authController.restrictTo("admin", 'author'),
-  postController.uploadImages,
-  postController.resizeImages,
-  postController.uploadS3,
+  postController.uploadImages("posts"),
+  postController.saveFileLocation,
+  // postController.resizeImages,
+  // postController.uploadS3,
   postController.setPostAuthorId,
   postController.createPost
 );
