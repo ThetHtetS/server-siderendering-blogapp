@@ -5892,15 +5892,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 // type is either 'password' or 'data'
 var updateSettings = exports.updateSettings = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data, type) {
-    var _url, _url2, res;
+    var url, res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           if ("development" == "production") {
-            _url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
+            url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
           } else {
-            _url2 = type === 'password' ? 'http://localhost:4000/api/v1/users/updateMyPassword' : 'http://localhost:4000/api/v1/users/updateMe';
+            url = type === 'password' ? 'http://localhost:4000/api/v1/users/updateMyPassword' : 'http://localhost:4000/api/v1/users/updateMe';
           }
           // const url =
           //   type === 'password'
@@ -21929,7 +21929,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36585" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38433" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
