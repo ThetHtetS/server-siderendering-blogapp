@@ -5456,6 +5456,7 @@ var showAlert = exports.showAlert = function showAlert(type, msg) {
   window.setTimeout(hideAlert, 5000);
 };
 },{}],"login.js":[function(require,module,exports) {
+var define;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5471,16 +5472,21 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; } /* eslint-disable */
 var signup = exports.signup = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(name, email, password, passwordConfirm) {
-    var res;
+    var url, res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          _context.next = 3;
+          if ("development" == "production") {
+            url = '/api/v1/users/signup';
+          } else {
+            url = 'http://localhost:4000/api/v1/users/signup';
+          }
+          _context.next = 4;
           return (0, _axios.default)({
             method: 'POST',
-            url: '/api/v1/users/signup',
-            // url: 'http://localhost:4000/api/v1/users/signup',
+            url: url,
+            // url: ,
             data: {
               name: name,
               email: email,
@@ -5488,7 +5494,7 @@ var signup = exports.signup = /*#__PURE__*/function () {
               passwordConfirm: passwordConfirm
             }
           });
-        case 3:
+        case 4:
           res = _context.sent;
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)('success', 'registered successfully!');
@@ -5496,17 +5502,17 @@ var signup = exports.signup = /*#__PURE__*/function () {
               location.assign('/');
             }, 1500);
           }
-          _context.next = 10;
+          _context.next = 11;
           break;
-        case 7:
-          _context.prev = 7;
+        case 8:
+          _context.prev = 8;
           _context.t0 = _context["catch"](0);
           (0, _alerts.showAlert)('error', _context.t0.response.data.message);
-        case 10:
+        case 11:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 8]]);
   }));
   return function signup(_x, _x2, _x3, _x4) {
     return _ref.apply(this, arguments);
@@ -5514,22 +5520,27 @@ var signup = exports.signup = /*#__PURE__*/function () {
 }();
 var login = exports.login = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(email, password) {
-    var res;
+    var url, res;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
-          _context2.next = 3;
+          if ("development" == "production") {
+            url = '/api/v1/users/login';
+          } else {
+            url = 'http://localhost:4000/api/v1/users/login';
+          }
+          _context2.next = 4;
           return (0, _axios.default)({
             method: 'POST',
             // url: '/api/v1/users/login',
-            url: 'http://localhost:4000/api/v1/users/login',
+            url: url,
             data: {
               email: email,
               password: password
             }
           });
-        case 3:
+        case 4:
           res = _context2.sent;
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)('success', 'Logged in successfully!');
@@ -5537,17 +5548,17 @@ var login = exports.login = /*#__PURE__*/function () {
               location.assign('/');
             }, 1000);
           }
-          _context2.next = 10;
+          _context2.next = 11;
           break;
-        case 7:
-          _context2.prev = 7;
+        case 8:
+          _context2.prev = 8;
           _context2.t0 = _context2["catch"](0);
           (0, _alerts.showAlert)('error', _context2.t0.response.data.message);
-        case 10:
+        case 11:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 7]]);
+    }, _callee2, null, [[0, 8]]);
   }));
   return function login(_x5, _x6) {
     return _ref2.apply(this, arguments);
@@ -5594,8 +5605,8 @@ var forgotPassword = exports.forgotPassword = /*#__PURE__*/function () {
           _context4.next = 3;
           return (0, _axios.default)({
             method: 'POST',
-            // url: '/api/v1/users/login',
-            url: 'http://localhost:4000/api/v1/users/forgotPassword',
+            url: '/api/v1/users/login',
+            // url: 'http://localhost:4000/api/v1/users/forgotPassword',
             data: {
               email: email
             }
@@ -5634,8 +5645,8 @@ var resetPassword = exports.resetPassword = /*#__PURE__*/function () {
           _context5.next = 3;
           return (0, _axios.default)({
             method: 'patch',
-            // url: '/api/v1/users/login',
-            url: "http://localhost:4000/api/v1/users/resetPassword/".concat(token),
+            url: '/api/v1/users/login',
+            // url: `http://localhost:4000/api/v1/users/resetPassword/${token}`,
             data: {
               password: password,
               passwordConfirm: passwordConfirm
@@ -5758,6 +5769,7 @@ var deleteCatz = exports.deleteCatz = /*#__PURE__*/function () {
   };
 }();
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"post.js":[function(require,module,exports) {
+var define;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5773,7 +5785,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; } /* eslint-disable */
 var createPost = exports.createPost = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(form, data) {
-    var res;
+    var res, url;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -5790,35 +5802,40 @@ var createPost = exports.createPost = /*#__PURE__*/function () {
           });
         case 4:
           res = _context.sent;
-          _context.next = 10;
+          _context.next = 11;
           break;
         case 7:
-          _context.next = 9;
-          return _axios.default.post("http://localhost:4000/api/v1/posts", form, {
+          if ("development" == "production") {
+            url = '/api/v1/posts';
+          } else {
+            url = 'http://localhost:4000/api/v1/posts';
+          }
+          _context.next = 10;
+          return _axios.default.post(url, form, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           });
-        case 9:
-          res = _context.sent;
         case 10:
+          res = _context.sent;
+        case 11:
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)('success', 'created successfully!');
             // window.setTimeout(() => {
             //   location.assign('/admin/posts');
             // }, 1500);
           }
-          _context.next = 16;
+          _context.next = 17;
           break;
-        case 13:
-          _context.prev = 13;
+        case 14:
+          _context.prev = 14;
           _context.t0 = _context["catch"](0);
           (0, _alerts.showAlert)('error', _context.t0.response.data.message);
-        case 16:
+        case 17:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 13]]);
+    }, _callee, null, [[0, 14]]);
   }));
   return function createPost(_x, _x2) {
     return _ref.apply(this, arguments);
@@ -5858,6 +5875,7 @@ var deletePost = exports.deletePost = /*#__PURE__*/function () {
   };
 }();
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"updateSettings.js":[function(require,module,exports) {
+var define;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5874,12 +5892,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 // type is either 'password' or 'data'
 var updateSettings = exports.updateSettings = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data, type) {
-    var url, res;
+    var _url, _url2, res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          url = type === 'password' ? '/api/v1/users/updateMyPassword' : 'http://localhost:4000/api/v1/users/updateMe';
+          if ("development" == "production") {
+            _url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
+          } else {
+            _url2 = type === 'password' ? 'http://localhost:4000/api/v1/users/updateMyPassword' : 'http://localhost:4000/api/v1/users/updateMe';
+          }
+          // const url =
+          //   type === 'password'
+          //     ? '/api/v1/users/updateMyPassword'
+          //     : 'http://localhost:4000/api/v1/users/updateMe';
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
@@ -21903,7 +21929,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44053" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36585" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
