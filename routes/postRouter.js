@@ -18,7 +18,7 @@ router
   postController.saveFileLocation,
   // postController.resizeImages,
   // postController.uploadS3,
-  postController.setPostAuthorId,
+  postController.setPostAuthorId, 
   postController.createPost
 );
  

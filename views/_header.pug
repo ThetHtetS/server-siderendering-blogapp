@@ -57,7 +57,7 @@ if categories
         a Log out
       li 
         a.nav__el(href='/me')
-          img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+          img.nav__user-img(src=`${user.photo}` alt=`Photo of ${user.name}`)
           span= user.name.split(' ')[0]
     else
       li 

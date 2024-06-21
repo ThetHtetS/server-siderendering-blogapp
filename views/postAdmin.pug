@@ -15,7 +15,7 @@ block content
             each post in posts
                 tr 
                     td.hideOnMobileAdmin   
-                      img(src=`/img/posts/${post.imageCover}`, width="88", height="78" , alt=`${post.title}`)
+                      img(src= post.imageCover, width="88", height="78" , alt=`${post.title}`)
                     td.title= post.title
                     td.hideOnMobileAdmin= post.author.name
                     td 

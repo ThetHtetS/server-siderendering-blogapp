@@ -87,13 +87,11 @@ exports.uploadImages = (directory) => {
 // exports.uploadImages =  upload.single('imageCover');
 
 exports.saveFileLocation = ( req, res, next ) => {
-  if (!req.files.imageCover || !req.files.images) return next();
-
+  // if (!req.files.imageCover || !req.files.images) return next();
+  console.log(req.files ,"file");
   // 1) cover image
-  if(req.files) req.body.imageCover= req.files.imageCover[0].location;
-  console.log(req);
-  console.log(req.files)
-  console.log(req.body)
+  if(req.files.imageCover) req.body.imageCover= req.files.imageCover[0].location;
+ 
  
   if(req.files.images){
     req.body.images = [];
