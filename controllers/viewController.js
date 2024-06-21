@@ -91,7 +91,7 @@ exports.getPost = catchAsync(async (req, res, next) => {
       ])
      // 3) check the user already like post or not
     postLike = await actionModel.find({
-    user: new mongoose.Types.ObjectId(req.user.id),
+    // user: new mongoose.Types.ObjectId(req.user.id),
     post: new mongoose.Types.ObjectId(post._id),
     actionType: 'like'
   })
