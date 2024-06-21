@@ -1,9 +1,9 @@
-const postModel = require("../models/postModel");
-const userModel = require("../models/userModel");
-const actionModel = require('../models/actionModel');
-const categoryModel = require("../models/categoryModel");
-const catchAsync = require("../utils/catchAsync");
-const APIFeatures = require('../utils/appFeatures');
+const postModel = require("./../models/postModel");
+const userModel = require("./../models/userModel");
+const actionModel = require('./../models/actionModel');
+const categoryModel = require("./../models/categoryModel");
+const catchAsync = require("./../utils/catchAsync");
+const APIFeatures = require('./../utils/appFeatures');
 //const AppError = require("../utils/appError");
 
 exports.adminOverview = catchAsync(async (req, res, next) => {

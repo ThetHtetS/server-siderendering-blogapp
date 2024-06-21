@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { unique } = require('next/dist/build/utils');
+// const { unique } = require('next/dist/build/utils');
 const Schema = mongoose.Schema;
 
 const ActionSchema = new Schema({
@@ -26,6 +26,6 @@ const ActionSchema = new Schema({
 
 )
 
-ActionSchema.index( { user: 1, post: -1, actionType: 1 } , { unique: true } )
+// ActionSchema.index( { user: 1, post: -1, actionType: 1 } , { unique: true } )
 
 module.exports = mongoose.model('ActionLog', ActionSchema);

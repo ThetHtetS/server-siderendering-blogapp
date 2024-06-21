@@ -1,10 +1,10 @@
-const postModel = require("../models/postModel");
-const userModel = require("../models/userModel");
-const categroyModel = require("../models/categoryModel")
-const actionModel= require('../models/actionModel')
-const catchAsync = require("../utils/catchAsync");
-const AppError = require("../utils/appError");
-const APIFeatures = require('../utils/appFeatures');
+const postModel = require("./../models/postModel");
+const userModel = require("./../models/userModel");
+const categroyModel = require("./../models/categoryModel")
+const actionModel= require('./../models/actionModel')
+const catchAsync = require("./../utils/catchAsync");
+const AppError = require("./../utils/appError");
+const APIFeatures = require('./../utils/appFeatures');
 const mongoose = require('mongoose');
 
 exports.getOverview = catchAsync(async (req, res, next) => {

@@ -1,4 +1,4 @@
-const actionModel = require('../models/actionModel')
+const actionModel = require('./../models/actionModel')
 const factory = require('./handlerFactory');
 const catchAsync = require('./../utils/catchAsync')
 
