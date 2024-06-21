@@ -1,8 +1,10 @@
 /* eslint-disable */
 import axios from 'axios';
 import { showAlert } from './alerts';
- 
+const dotenv = require("dotenv");
 
+dotenv.config({ path: "./../../.env" });
+ console.log(process.env.NODE_ENV, "log");
 export const createPost = async( form , data)=>{
     try {
         let res;
@@ -16,14 +18,14 @@ export const createPost = async( form , data)=>{
           );
         }
         else {
-          // var url;
-          // if(process.env.NODE_ENV == "production") {
-          //    url =  '/api/v1/posts'
-          // }
-          // else {
-          //    url = 'http://localhost:4000/api/v1/posts'
-          // }
-          res = await axios.post('/api/v1/posts', form, {
+          var url;
+          if(process.env.NODE_ENV == "production") {
+             url =  '/api/v1/posts'
+          }
+          else {
+             url = 'http://localhost:4000/api/v1/posts'
+          }
+          res = await axios.post(url, form, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },

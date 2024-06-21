@@ -1,7 +1,7 @@
 mixin postCard(post)
     .postCard(class= ``)
         .card__picture
-            img.card__picture-img(src=`/img/posts/tour-1-3.jpg`, alt=`${post.title}`)
+            img.card__picture-img(src=post.photo, alt=`${post.title}`)
         //- img.card__picture-img(src=`/img/posts/${posts[0].imageCover}`, alt=`${posts[0].title}`)
         .card__content
             a.text-decoration-none(href=`/post/${post.slug}`)
@@ -15,7 +15,7 @@ mixin postCard(post)
 mixin postCard1(post)
     .postCard1(class= ``)
         .card__picture
-            img.card__picture-img(src=`/img/posts/tour-1-3.jpg`, alt=`${post.title}`)
+            img.card__picture-img(src=post.photo, alt=`${post.title}`)
         //- img.card__picture-img(src=`/img/posts/${posts[0].imageCover}`, alt=`${posts[0].title}`)
         .card__content
             a.text-decoration-none(href=`/post/${post.slug}`)
@@ -31,7 +31,7 @@ mixin miniPostCard(post,index)
     .miniPostCard(class= `item-${index+2}`)
         .card__picture 
             //- img.card__picture-img(src=`/img/posts/${post.imageCover}`, alt=`${post.title}`)
-            img.card__picture-img(src=`/img/posts/tour-1-3.jpg`, alt=`${post.title}`)
+            img.card__picture-img(src=post.photo, alt=`${post.title}`)
         .card__content
             a.text-decoration-none(href=`/post/${post.slug}`)
                 .card__title= post.title
