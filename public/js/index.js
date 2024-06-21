@@ -14,6 +14,7 @@ const userPasswordForm = document.querySelector('.form-user-password');
 const forgotPasswordForm = document.querySelector('.form--forgotPassword');
 const resetPasswordForm = document.querySelector('.form--resetPassword');
 const logOutBtn = document.querySelector('.nav__el--logout');
+const logOutSide = document.getElementById('logoutbtn')
 const newPostForm = document.querySelector('#form--post');
 const commentForm = document.querySelector('.form--comment');
 const btnDeleteCatz = document.querySelectorAll('.btnDelete--category');
@@ -34,18 +35,18 @@ var cat_id;
 
 if(chart) LineChart(); 
 
-if(likeIconFill)
-{   likeIconFill.addEventListener("click", ()=> {
-  const postId = document.getElementById('post').dataset.postid;
-  createAction(postId, "like");
-})
-}
-if (likeIconRegular) 
-  likeIconRegular.addEventListener("click", ()=> {
-    const postId = document.getElementById('post').dataset.postid;
-    createAction(postId, "like");
-    console.log("like");
-  })
+// if(likeIconFill)
+// {   likeIconFill.addEventListener("click", ()=> {
+//   const postId = document.getElementById('post').dataset.postid;
+//   createAction(postId, "like");
+// })
+// }
+// if (likeIconRegular) 
+//   likeIconRegular.addEventListener("click", ()=> {
+//     const postId = document.getElementById('post').dataset.postid;
+//     createAction(postId, "like");
+//     console.log("like");
+//   })
 
 
 if(adminMenuCloseBtn)
@@ -159,7 +160,11 @@ if (signupForm)
   });
 
 if (logOutBtn) logOutBtn.addEventListener('click', logout);
-
+if (logOutSide)
+{
+  logOutSide.addEventListener('click', logout);
+  console.log("click logout")
+} 
 
 if (userDataForm)
   userDataForm.addEventListener('submit', e => {

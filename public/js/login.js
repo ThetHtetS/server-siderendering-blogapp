@@ -1,22 +1,11 @@
 /* eslint-disable */
 import axios from 'axios';
 import { showAlert } from './alerts';
-const dotenv = require("dotenv");
 
-dotenv.config({ path: "./../../../.env" });
-console.log(process.env.NODE_ENV);
 export const signup = async (name, email, password, passwordConfirm) => {
   try {
    
-    var url;
-    if(process.env.NODE_ENV == "production") {
-       url =  '/api/v1/users/signup'
-    }
-    else {
-       url = 'http://localhost:4000/api/v1/users/signup'
-    }
-   
-    const res = await axios({
+       const res = await axios({
       method: 'POST',
       url: '/api/v1/users/signup',
       // url: ,
@@ -41,17 +30,11 @@ export const signup = async (name, email, password, passwordConfirm) => {
 
 export const login = async (email, password) => {
   try { 
-    var url 
-    if(process.env.NODE_ENV == "production") {
-       url =  '/api/v1/users/login'
-    }
-    else {
-       url = 'http://localhost:4000/api/v1/users/login'
-    }
+  
+      // url = 'http://localhost:4000/api/v1/users/login'
     const res = await axios({
       method: 'POST',
-      // url: '/api/v1/users/login',
-      url,
+      url: '/api/v1/users/login', 
       data: {
         email,
         password

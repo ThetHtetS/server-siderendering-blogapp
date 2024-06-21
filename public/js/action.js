@@ -10,7 +10,7 @@ exports.createAction = async (post_id , actionType) => {
       const res = await axios({
         method: 'POST',
         // url: '/api/v1/action',
-        url: `http://localhost:4000/api/v1/action/${post_id}`,
+        url: `/api/v1/action/${post_id}`,
         data: {
           actionType
         }
