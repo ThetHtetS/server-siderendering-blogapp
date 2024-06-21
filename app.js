@@ -73,7 +73,7 @@ app.use("/images", (req, res, next) => {
   });
   next();
 });
-console.log(process.env.NODE_ENV);
+
 app.use((req,res,next) => {
   res.set({
     "Content-Security-Policy": "img-src *"
