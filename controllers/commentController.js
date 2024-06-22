@@ -10,6 +10,6 @@ exports.setPostUserIds = (req, res, next) => {
 
 exports.getAllComments = factory.getAll(Comment);
 exports.getComment = factory.getOne(Comment);
-exports.createComment = factory.createOne(Comment);
+exports.createComment = factory.createOne(Comment, { path: 'post', select: 'slug'});
 exports.updateComment = factory.updateOne(Comment);
 exports.deleteComment = factory.deleteOne(Comment);

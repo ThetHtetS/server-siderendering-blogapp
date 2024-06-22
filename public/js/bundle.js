@@ -47611,7 +47611,6 @@ var deletePost = exports.deletePost = /*#__PURE__*/function () {
   };
 }();
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js","dotenv":"../../node_modules/dotenv/lib/main.js"}],"updateSettings.js":[function(require,module,exports) {
-var define;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47633,21 +47632,7 @@ var updateSettings = exports.updateSettings = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          // var url;
-          // condole.log(process.env.NODE_ENV)
-          // if(process.env.NODE_ENV == "production") {
-          //    url =
-          //   type === 'password'
-          //     ? '/api/v1/users/updateMyPassword'
-          //     : '/api/v1/users/updateMe';
-          // }
-          // else {
-          //   url =
-          //   type === 'password'
-          //     ? 'http://localhost:4000/api/v1/users/updateMyPassword'
-          //     : 'http://localhost:4000/api/v1/users/updateMe';
-          // }
-          url = type === 'password' ? '/api/v1/users/updateMyPassword' : 'http://localhost:4000/api/v1/users/updateMe';
+          url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
@@ -47658,6 +47643,10 @@ var updateSettings = exports.updateSettings = /*#__PURE__*/function () {
           res = _context.sent;
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)('success', "".concat(type.toUpperCase(), " updated successfully!"));
+            window.setTimeout(function () {
+              // console.log(res)
+              // location.assign('/me');
+            }, 1000);
           }
           _context.next = 11;
           break;
@@ -47703,15 +47692,16 @@ var createComment = exports.createComment = /*#__PURE__*/function () {
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)('success', 'created successfully!');
             window.setTimeout(function () {
-              location.assign("/posts/".concat(postId));
-            }, 1500);
+              // console.log(res)
+              location.assign("/posts/".concat(res.data.data.data.post.slug));
+            }, 1000);
           }
           _context.next = 10;
           break;
         case 7:
           _context.prev = 7;
           _context.t0 = _context["catch"](0);
-          (0, _alerts.showAlert)('error', _context.t0.response.data.message);
+          (0, _alerts.showAlert)('error', _context.t0);
         case 10:
         case "end":
           return _context.stop();
@@ -63679,7 +63669,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37793" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33997" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

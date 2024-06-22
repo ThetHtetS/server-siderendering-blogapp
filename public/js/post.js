@@ -9,25 +9,21 @@ export const createPost = async( form , data)=>{
     try {
         let res;
         if(data.editMode=='true') {
-          res = await axios.put(`/api/v1/posts/${data.postId}`, form, 
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-          );
+              res = await axios.put(`/api/v1/posts/${data.postId}`, form, 
+                    {
+                      headers: {
+                        'Content-Type': 'multipart/form-data',
+                      },
+                    }
+              );
         }
         else {
-          
-            //  url =  '/api/v1/posts'
-          
-            // url = 'http://localhost:4000/api/v1/posts'
               res = await axios.post('/api/v1/posts', form, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          });
-        }
+                    headers: {
+                      'Content-Type': 'multipart/form-data',
+                    },
+              });
+             }
     
         if (res.data.status === 'success') {
           showAlert('success', 'created successfully!');

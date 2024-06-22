@@ -38,11 +38,12 @@ exports.updateOne = (Model) =>
     });
   });
 
-exports.createOne = (Model) =>
+exports.createOne = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
     console.log(req.body);
-    const doc = await Model.create(req.body);
-
+    var doc = await new Model(req.body).save();
+    if (popOptions) doc = await doc.populate(popOptions);
+    
     res.status(201).json({
       status: 'success',
       data: {

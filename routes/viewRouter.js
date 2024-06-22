@@ -6,8 +6,8 @@ const router = express.Router();
 
 
 router.get('/', authController.isLoggedIn , viewsController.getOverview);
-router.get('/posts', viewsController.getPosts)
-router.get('/post/:slug', authController.isLoggedIn, viewsController.getPost);
+router.get('/posts',authController.isLoggedIn, viewsController.getPosts)
+router.get('/posts/:slug', authController.isLoggedIn, viewsController.getPost);
 // router.get('/:catId/posts', authController.isLoggedIn, viewsController.getPostsByCategory)
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 router.get('/signup', authController.isLoggedIn, viewsController.getSignUpForm);

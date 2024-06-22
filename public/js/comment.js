@@ -11,10 +11,10 @@ export const createComment = async(data, postId)=>{
         if (res.data.status === 'success') {
           showAlert('success', 'created successfully!');
           window.setTimeout(() => {
-            location.assign(`/posts/${postId}`);
-          }, 1500);
+            location.assign(`/posts/${res.data.data.data.post.slug}`);
+          }, 1000);
         }
       } catch (err) {
-        showAlert('error', err.response.data.message);
+        showAlert('error', err);
       }
 }

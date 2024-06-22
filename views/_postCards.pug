@@ -4,7 +4,7 @@ mixin postCard(post)
             img.card__picture-img(src= post.imageCover, alt=`${post.title}`)
         //- img.card__picture-img(src=`/img/posts/${posts[0].imageCover}`, alt=`${posts[0].title}`)
         .card__content
-            a.text-decoration-none(href=`/post/${post.slug}`)
+            a.text-decoration-none(href=`/posts/${post.slug}`)
              .card__title= post.title
             .card__data
                 p=`${post.body.slice(0, 50)}`
@@ -18,7 +18,7 @@ mixin postCard1(post)
             img.card__picture-img(src= post.imageCover, alt=`${post.title}`)
         //- img.card__picture-img(src=`/img/posts/${posts[0].imageCover}`, alt=`${posts[0].title}`)
         .card__content
-            a.text-decoration-none(href=`/post/${post.slug}`)
+            a.text-decoration-none(href=`/posts/${post.slug}`)
              .card__title= post.title
             .card__data
                 p=`${post.body.slice(0, 50)}`
@@ -33,7 +33,7 @@ mixin miniPostCard(post,index)
             //- img.card__picture-img(src=`/img/posts/${post.imageCover}`, alt=`${post.title}`)
             img.card__picture-img(src= post.imageCover, alt=`${post.title}`)
         .card__content
-            a.text-decoration-none(href=`/post/${post.slug}`)
+            a.text-decoration-none(href=`/posts/${post.slug}`)
                 .card__title= post.title
             .card__footer 
                 p Thet Htet Soe

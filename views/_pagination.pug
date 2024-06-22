@@ -1,6 +1,6 @@
 
 mixin pageList(currentPage,  startPage, endPage, category)
-  - for (var page=startPage; page<endPage; page++)
+  - for (var page=startPage; page<=endPage; page++)
       a.text-decoration-none(href=`?page=${page}${category ? `&category=${category}` : '' }`)
         span(class=`page ${page==currentPage ? 'active': ''}`)=page
 

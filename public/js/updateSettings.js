@@ -5,24 +5,11 @@ import { showAlert } from './alerts';
 // type is either 'password' or 'data'
 export const updateSettings = async (data, type) => {
   try {
-    // var url;
-    // condole.log(process.env.NODE_ENV)
-    // if(process.env.NODE_ENV == "production") {
-    //    url =
-    //   type === 'password'
-    //     ? '/api/v1/users/updateMyPassword'
-    //     : '/api/v1/users/updateMe';
-    // }
-    // else {
-    //   url =
-    //   type === 'password'
-    //     ? 'http://localhost:4000/api/v1/users/updateMyPassword'
-    //     : 'http://localhost:4000/api/v1/users/updateMe';
-    // }
+   
     const url =
       type === 'password'
         ? '/api/v1/users/updateMyPassword'
-        : 'http://localhost:4000/api/v1/users/updateMe';
+        : '/api/v1/users/updateMe';
 
     const res = await axios({
       method: 'PATCH',
@@ -32,6 +19,9 @@ export const updateSettings = async (data, type) => {
 
     if (res.data.status === 'success') {
       showAlert('success', `${type.toUpperCase()} updated successfully!`);
+      window.setTimeout(() => {
+        location.assign('/me');
+      }, 1000);
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
